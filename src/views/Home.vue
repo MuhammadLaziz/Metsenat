@@ -1,21 +1,24 @@
 <template>
-    <div class="w-[100%] bg-[#fff]">
-        <NavbarVue />
-        <ControlBar />
-    </div>
+  <div class="w-[100%] bg-[#fff]">
+    <Navbar />
+    <ControlBar />
+      <div class="flex items-center justify-between">
+          <TotalSum />
+      </div>
+  </div>
 </template>
 
 <script>
-import NavbarVue from '../components/Navbar.vue'
-import ControlBar from '../components/ControlBar.vue'
-    export default {
-        components: {
-    NavbarVue,
-    ControlBar
-}
-    }
+import ControlBar from "../components/ControlBar.vue";
+import TotalSum from "../components/TotalSum.vue";
+import Navbar from "../components/Navbar.vue";
+export default {
+  components: {
+    ControlBar,
+    TotalSum,
+    Navbar
+},
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

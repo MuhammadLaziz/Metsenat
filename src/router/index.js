@@ -1,16 +1,27 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      component: () => import('@/views/Login.vue')
+      path: '/auth',
+      component: () => import('@/layouts/Login.vue')
     },
     {
       path: '/dashboard',
-      component: () => import('@/views/Home.vue')
-    }
+      component: () => import('@/views/dashboard.vue')
+    }, {
+      path: '/homiylar',
+      component: () => import('@/views/homiylar.vue')
+    }, 
+    {
+      path: '/',
+      component: () => import('@/pages/HomePage.vue')
+    },
+    {
+      path: '/talabalar',
+      components: () => import('@/views/talabalar.vue')
+    },
   ]
 })
 
