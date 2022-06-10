@@ -20,7 +20,7 @@
       <tbody>
         <tr
           v-for="item in homiylar"
-          class="bg-[#fff] rounded-[8px] mt-[12px] space-y-[15px]"
+          class="bg-[#fff] rounded-[8px] mt-[12px]"
         >
           <td class="pl-[16px] px-[25px] text-left">{{ item.id }}</td>
           <td class="pl-[13px] font-[500] text-[#1D1D1F] py-[25px]">
@@ -38,12 +38,12 @@
           <td class="pl-[13px] py-[25px] text-center">{{ item.date }}</td>
           <td
             class="pl-[14px] py-[25px] text-center"
-            :class="
-              [item.condition == 'Yangi' ? 'text-[#5BABF2]' : '',
+            :class="[
+              item.condition == 'Yangi' ? 'text-[#5BABF2]' : '',
               item.condition == 'Moderatsiyada' ? 'text-[#FFA445]' : '',
               item.condition == 'Tasdiqlangan' ? 'text-[#00CF83]' : '',
-              item.condition == 'Bekor qilingan' ? 'text-[#979797]' : '']
-            "
+              item.condition == 'Bekor qilingan' ? 'text-[#979797]' : '',
+            ]"
           >
             {{ item.condition }}
           </td>
@@ -57,21 +57,16 @@
 </template>
 
 <script>
-
-    export default {
-        props: {
-            homiylar: Array
-        },
-        mounted() {
-          console.log(this.homiylar);
-        },
-    }
+export default {
+  props: {
+    homiylar: Array,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-
 .table {
-    border-spacing: 0 10px;
+  border-spacing: 0 10px;
 }
 .bot {
   padding-bottom: 12px;

@@ -2,9 +2,9 @@
   <div class="w-[100%] bg-[#fff]">
     <Navbar />
     <ControlBar />
-      <div class="flex items-center justify-between">
-          <TotalSum />
-      </div>
+    <div class="flex items-center justify-between">
+      <TotalSum />
+    </div>
   </div>
 </template>
 
@@ -16,8 +16,8 @@ export default {
   components: {
     ControlBar,
     TotalSum,
-    Navbar
-},
+    Navbar,
+  },
 };
 </script>
 

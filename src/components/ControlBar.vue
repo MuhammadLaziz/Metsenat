@@ -60,9 +60,8 @@ export default {
       this.homiylar = false;
       this.dashboard = false;
       this.talabalar = true;
-      this.$router.push({
-        path: '/talabalar'
-      })
+      this.$router.push('/talabalar');
+      console.log('dasdasdas')
     },
   },
 };
