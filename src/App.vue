@@ -6,20 +6,45 @@
       }"
     >
       <Navbar />
-      <ControlBar />
+      <ControlBar
+        v-if="
+          this.$route.name !== 'newStudents' &&
+          this.$route.name !== 'singleTalaba'
+        "
+      />
+      <TalabalarNav v-else />
     </div>
-    <!-- <RouterView /> -->
-    <router-view/>
 
+    <router-view v-slot="{ Component }">
+      <Transition name="scale" mode="out-in">
+        <component :is="Component"></component>
+      </Transition>
+    </router-view>
   </div>
 </template>
 
-<script setup>
-// import { RouterLink, RouterView } from "vue-router";
-// import Login from './views/Login.vue';
+<script>
 import Navbar from "./components/Navbar.vue";
 import ControlBar from "./components/ControlBar.vue";
-// import HelloWorld from '@/components/HelloWorld.vue'
+import TalabalarNav from "./components/TalabalarNav.vue";
+export default {
+  components: {
+    TalabalarNav,
+    ControlBar,
+    Navbar,
+  },
+};
 </script>
 
-<style></style>
+<style>
+.scale-enter-active,
+.scale-leave-active {
+  transition: all 0.5s ease;
+}
+
+.scale-enter-from,
+.scale-leave-to {
+  opacity: 0;
+  transform: scale(0.9);
+}
+</style>

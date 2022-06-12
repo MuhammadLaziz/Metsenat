@@ -1,17 +1,35 @@
 <template>
   <div>
-    <Homiylar :homiylar="homiy" />
+    <!-- <Homiylar :homiylar="homiy" /> -->
+    <div class="max-w-[1160px] m-auto">
+      <Table :header="header" :homiy="homiy" />
+      <PaginationFooter class="py-[30px]" />
+    </div>
   </div>
 </template>
 
 <script>
 import Homiylar from "@/components/Homiylar.vue";
+import PaginationFooter from "../components/PaginationFooter.vue";
+import Table from "../components/Table.vue";
 export default {
   components: {
     Homiylar,
+    PaginationFooter,
+    Table,
   },
   data() {
     return {
+      header: [
+        { id: 1, head: "#" },
+        { id: 2, head: "f.i.sh." },
+        { id: 3, head: "Tel.Raqami" },
+        { id: 4, head: "Homiylik summasi" },
+        { id: 5, head: "Sarflangan summa" },
+        { id: 6, head: "Sana" },
+        { id: 7, head: "Holati" },
+        { id: 8, head: "Amallar" },
+      ],
       homiy: [
         {
           id: 1,

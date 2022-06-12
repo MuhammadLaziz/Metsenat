@@ -1,65 +1,63 @@
 <template>
   <div class="max-w-[1160px] h-[872px] flex justify-center m-auto mt-[40px]">
-    <form class="w-[790px] h-[466px] bg-[#fff] p-[28px] rounded-[12px]">
+    <form @submit.prevent="submit" class="w-[790px] h-[466px] bg-[#fff] p-[28px] rounded-[12px]">
       <div class="flex items-center justify-between">
         <div class="w-[353px]">
           <label for="fullName" class="font-[500] text-[#1D1D1F]"
             >F.I.Sh. (Familiya Ism Sharif)</label
           >
           <input
+          v-model="fullName"
             type="text"
             id="fullName"
             placeholder="Abdullayev Abdulla Abdulla o’g’li"
             class="w-full mt-[8px] bg-[#E0E7FF] text-[#2E384D59] rounded-[6px] outline-none px-[16px] py-[12px] border border-[#E0E7FF]"
           />
+          <span v-if="v$.fullName.$error" class="error-mes">{{
+            v$.fullName.$errors[0].$message
+          }}</span>
         </div>
         <div class="w-[353px]">
           <label for="telNum" class="font-[500] text-[#1D1D1F]"
             >Telefon raqam</label
           >
           <input
+          v-model="telNum"
             type="text"
             id="telNum"
             placeholder="+998 00 000-00-00"
             class="w-full mt-[8px] bg-[#E0E7FF] text-[#2E384D59] outline-none rounded-[6px] px-[16px] py-[12px] border border-[#E0E7FF]"
           />
+          <span v-if="v$.telNum.$error" class="error-mes">{{
+            v$.telNum.$errors[0].$message
+          }}</span>
         </div>
       </div>
       <div class="mt-[28px]">
         <label for="university" class="font-[500] text-[#1D1D1F]">OTM</label>
-        <select
-          name=""
-          id="university"
-          class="w-full border border-[#E0E7FF] px-[16px] py-[12px] bg-[#e9edfb] mt-[8px] text-[#2E384D] outline-none rounded-[6px]"
-        >
-          <option value="default">OTM ni tanlang</option>
-          <option v-for="item in universities" value="item" :key="item.id">
-            {{ item.place }}
-          </option>
-        </select>
+        <SelectOption :options="universities" />
       </div>
       <div class="mt-[28px] flex items-center justify-between border-b-2 border-[#F5F5F7] pb-[28px]">
           <div class="w-[353px] flex flex-col">
             <label for="degree" class="font-[500] text-[#1D1D1F]"
-                >F.I.Sh. (Familiya Ism Sharif)</label
+                >Talabalik turi</label
             >
-            <select id="degree" class="border border-[#E0E7FF] px-[16px] py-[12px] bg-[#e9edfb] mt-[8px] text-[#2E384D] outline-none rounded-[6px]">
-                <option value="default">Barchasi</option>
-                <option v-for="item in degree" value="item" :key="item.id">
-                    {{ item.degree }}
-                </option>
-            </select>
+            <SelectOption :options="degree" />
         </div>
         <div class="w-[353px]">
           <label for="contractPrice" class="font-[500] text-[#1D1D1F]"
             >Kontrakt summa</label
           >
           <input
+          v-model="kontrakt"
             type="text"
             id="contractPrice"
             placeholder="Summani kiriting"
             class="w-full mt-[8px] bg-[#E0E7FF] text-[#2E384D59] outline-none rounded-[6px] px-[16px] py-[12px] border border-[#E0E7FF]"
           />
+          <span v-if="v$.kontrakt.$error" class="error-mes">{{
+            v$.kontrakt.$errors[0].$message
+          }}</span>
         </div>
       </div>
       <button class="px-[32px] py-[13px] bg-[#3366FF] text-white rounded-[5px] flex items-center mt-[28px] float-right">
@@ -71,69 +69,106 @@
 </template>
 
 <script>
+import useVuelidate from '@vuelidate/core';
+import { required, minLength } from '@vuelidate/validators';
 import Plus from '../components/icons/Plus.vue';
+import SelectOption from '../components/SelectOption.vue'
 export default {
   data() {
     return {
+      v$: useVuelidate(),
       studyPlace: "",
+      fullName: '',
+      telNum: '',
+      kontrakt: '',
+      studentType: '',
       degree: [
           {
               id: 1,
-              degree: 'Bakalavr'
+              title: 'Bakalavr'
           },
           {
               id: 2,
-              degree: 'Magistratura'
+              title: 'Magistratura'
           }
       ],
       universities: [
         {
           id: 1,
-          place: "Toshkent shahridagi INHA Universiteti",
+          title: "Toshkent shahridagi INHA Universiteti",
         },
         {
           id: 2,
-          place: "O’zbekiston milliy universiteti",
+          title: "O’zbekiston milliy universiteti",
         },
         {
           id: 3,
-          place: "Toshkent davlat texnika universiteti",
+          title: "Toshkent davlat texnika universiteti",
         },
         {
           id: 4,
-          place: "Toshkent davlat iqtisodiyot universiteti",
+          title: "Toshkent davlat iqtisodiyot universiteti",
         },
         {
           id: 5,
-          place: "O’zbekiston davlat jahon tillari universiteti",
+          title: "O’zbekiston davlat jahon tillari universiteti",
         },
         {
           id: 6,
-          place: "Toshkent davlat sharqshunoslik instituti",
+          title: "Toshkent davlat sharqshunoslik instituti",
         },
         {
           id: 7,
-          place: "Toshkent arxitektura-qurilish instituti",
+          title: "Toshkent arxitektura-qurilish instituti",
         },
         {
           id: 8,
-          place: "Toshkent to’qimachilik va нngil sanoat istituti",
+          title: "Toshkent to’qimachilik va нngil sanoat istituti",
         },
         {
           id: 9,
-          place: "Toshkent avtomobil-yo’llari instituti",
+          title: "Toshkent avtomobil-yo’llari instituti",
         },
         {
           id: 10,
-          place: "Toshkent moliya instituti",
+          title: "Toshkent moliya instituti",
         },
       ],
     };
   },
+  methods: {
+    submit() {
+      this.v$.$validate()
+      if(!this.v$.$error) {
+        this.$router.push('/talabalar')
+      }else {
+        alert('Invalid action')
+      }
+    }
+  },
+  validations() {
+    return {
+      fullName: { required, minLength: minLength(10)},
+      telNum: { required, minLength: minLength(9)},
+      kontrakt: { required, minLength: minLength(7)}
+    }
+  },
   components: {
-      Plus
+      Plus, SelectOption
   }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.el-select {
+  width: 100% !important;
+}
+</style>
+<style scoped>
+.error-mes {
+  color: red;
+  font-weight: 500;
+  font-size: 14px;
+  margin-top: 6px;
+}
+</style>

@@ -31,40 +31,24 @@
     </div>
     <div>
       <h3 class="font-[500] text-[#1D1D1F] mt-[28px]">To‘lov summasi</h3>
-      <div class="flex items-center justify-between flex-wrap">
-        <div v-for="(item, index) in price" class="space-y-2">
-          <label
-            :for="index"
-            :class="[active == item.cost ? 'active' : '']"
-            v-bind:value="item.cost"
-            class="textStyle mt-[12px]"
-          >
-            {{ item.cost }} <span class="text-[#2E5BFF]"> UZS</span>
-            <input
-              type="radio"
-              class="hidden"
-              name="sum"
-              v-model="active"
-              :id="index"
-              :value="item.cost"
-            />
-          </label>
-        </div>
+      <div class="grid grid-cols-3 gap-4">
+        <Sums :price="price" :boshqasi="boshqasi"/>
         <button
           @click="boshqasiHandler"
           type="button"
           for="boshqasi"
+          :class="boshqasi ? 'bg-[#E0E7FF]' : ''"
           class="textStyle"
         >
           Boshqasi
         </button>
+      </div>
         <input
           v-if="boshqasi"
           type="text"
-          class="w-full input mt-[18px]"
+          class="w-full input mt-[18px] col-span-4"
           v-model="active"
         />
-      </div>
     </div>
     <div v-if="yuridik" class="mt-[28px]">
       <label
@@ -79,9 +63,7 @@
         v-model="companyName"
         placeholder="Orient group"
       />
-      <span v-if="v$.companyName.$error" class="error-mes">{{
-        v$.companyName.$errors[0].$message
-      }}</span>
+      
     </div>
     <button
       @click="submit"
@@ -95,77 +77,78 @@
 <script>
 import useVuelidate from "@vuelidate/core";
 import { required, minLength } from "@vuelidate/validators";
+import Sums from "./Sums.vue";
 export default {
-  data() {
-    return {
-      v$: useVuelidate(),
-      fullName: "",
-      telNum: "",
-      companyName: "",
-      checked: false,
-      boshqasi: false,
-      price: [
-        {
-          id: 1,
-          cost: 100000,
-        },
-        {
-          id: 2,
-          cost: 200000,
-        },
-        {
-          id: 3,
-          cost: 300000,
-        },
-        {
-          id: 4,
-          cost: 400000,
-        },
-        {
-          id: 5,
-          cost: 500000,
-        },
-      ],
-      active: "100000",
-    };
-  },
-  props: {
-    yuridik: Boolean,
-  },
-  methods: {
-    boshqasiHandler() {
-      this.boshqasi = !this.boshqasi;
+    data() {
+        return {
+            v$: useVuelidate(),
+            fullName: "",
+            telNum: "",
+            companyName: "",
+            checked: false,
+            boshqasi: false,
+            price: [
+                {
+                    id: 1,
+                    cost: 100000,
+                },
+                {
+                    id: 2,
+                    cost: 200000,
+                },
+                {
+                    id: 3,
+                    cost: 300000,
+                },
+                {
+                    id: 4,
+                    cost: 400000,
+                },
+                {
+                    id: 5,
+                    cost: 500000,
+                }
+            ],
+            active: "100000",
+            
+        };
     },
-    submit() {
-      this.v$.$validate();
-      if (!this.v$.$error) {
-        console.log("Submited Successfuly");
-        this.$router.push("/dashboard");
-      } else {
-        console.log("invalid action");
-      }
+    props: {
+        yuridik: Boolean,
     },
-  },
-  validations() {
-    return {
-      fullName: { required, minLength: minLength(10) },
-      telNum: { required, minLength: minLength(9) },
-      companyName: { required, minLength: minLength(4) },
-    };
-  },
-  mounted() {
-    this.$refs.fullName.focus();
-  },
+    methods: {
+        boshqasiHandler() {
+            this.boshqasi = !this.boshqasi;
+        },
+        submit() {
+            this.v$.$validate();
+            if (!this.v$.$error) {
+                console.log("Submited Successfuly");
+                this.$router.push("/dashboard");
+            }
+            else {
+                console.log("invalid action");
+            }
+        },
+    },
+    validations() {
+        return {
+            fullName: { required, minLength: minLength(10) },
+            telNum: { required, minLength: minLength(9) },
+        };
+    },
+    mounted() {
+        this.$refs.fullName.focus();
+    },
+    components: { Sums }
 };
 </script>
 
 <style lang="scss" scoped>
 .textStyle {
-  width: 155px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 61px;
+  display: inline-block;
+  width: 100%;
+  padding: 16px 32px;
   color: #2e384d;
   font-weight: 500;
   font-size: 18px;

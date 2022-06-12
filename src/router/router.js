@@ -22,6 +22,16 @@ export const routes = [
     },
     {
       path: "/newStudent",
+      name: 'newStudents',
       component: () => import("@/pages/newTalaba.vue"),
     },
+    {
+      path: '/singleHomiy',
+      component: () => import("@/pages/SingleHomiy.vue")
+    },
+    {
+      path: '/singleTalaba',
+      name: 'singleTalaba',
+      component: () => import("@/pages/singleTalaba.vue")
+    }
 ]

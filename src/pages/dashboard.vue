@@ -3,14 +3,24 @@
     <div class="flex items-center justify-between mb-[28px]">
       <TotalSum :cardSum="cardSum" />
     </div>
-    <span class="mb-[28px]">
-      <img src="../assets/images/chart.png" alt="" />
+    <span class="mb-[28px] ">
+      <h1 class="text-[#2E384D] text-[24px] font-[700] mb-[8px]">
+        Homiylar va talabalar soni
+      </h1>
+      <canvas
+        id="myChart"
+        height="400"
+        width="1100"
+        class="cursor-pointer bg-[#fff] p-[24px]"
+      ></canvas>
     </span>
   </div>
 </template>
 
 <script>
 import TotalSum from "../components/TotalSum.vue";
+import { Chart, registerables } from "chart.js";
+Chart.register(...registerables);
 export default {
   data() {
     return {
@@ -36,7 +46,72 @@ export default {
   components: {
     TotalSum,
   },
+
+  mounted() {
+    const ctx = document.getElementById("myChart");
+
+    const labels = [
+      "Jabuary",
+      "February",
+      "March",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "November",
+      "December",
+    ];
+    const data = {
+      labels: labels,
+      datasets: [
+        {
+          label: "My First Dataset",
+          data: [4000, 220, 700, 3000, 2000, 3000, 4000, 6000, 7000],
+          fill: false,
+          borderColor: "rgb(75, 192, 192)",
+          tension: 0.6,
+        },
+        {
+          label: "My First Dataset",
+          data: [300, 120, 600, 3000, 7000, 3000, 6000, 6000, 1000],
+          fill: false,
+          borderColor: "rgb(75, 192, 192)",
+          tension: 0.6,
+        },
+        {
+          label: "My First Dataset",
+          data: [500, 620, 700, 3000, 1000, 3000, 8000, 6000, 9000],
+          fill: false,
+          borderColor: "rgb(75, 192, 192)",
+          tension: 0.3,
+        },
+      ],
+    };
+
+    const myChart = new Chart(ctx, {
+      type: "line",
+      data: data,
+      options: {
+        scales: {
+          y: {
+            beginAtZero: false,
+          },
+          x: {
+            grid: {
+              display: false
+            }
+          }
+        },
+      },
+    });
+    myChart;
+  },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.canvas {
+  width: 1160px !important;
+}
+</style>
