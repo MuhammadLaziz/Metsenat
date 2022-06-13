@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar py-[12px] bg-[#fff] shadow-sm transition-all">
+  <div class="navbar one-edge-shadow py-[12px] bg-[#fff] transition-all">
     <div class="max-w-[1160px] m-auto flex items-center justify-between">
       <router-link to="/">
         <logoBlueVue />
@@ -30,4 +30,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.one-edge-shadow {
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
+}
+</style>

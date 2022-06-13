@@ -104,9 +104,10 @@
           >Telefon raqam</label
         >
         <input
+        v-maska="'(##)-###-##-##'"
           type="text"
           id="telNum"
-          placeholder="+998 973-72-60"
+          placeholder="(99)-973-72-60"
           class="py-[12px] px-[16px] border mt-[8px] bg-[#E0E7FF] rounded-[6px] text-[#2E384D] border-[#E0E7FF] outline-none"
         />
       </div>
@@ -126,7 +127,7 @@
       </button>
     </form>
   </el-dialog>
-  <el-dialog v-model="homiyQoshish" title="Tahrirlash" >
+  <el-dialog v-model="homiyQoshish" title="Homiy qo‘shish" >
     
     <form class="flex flex-col gap-7 ">
       <div class="flex flex-col">

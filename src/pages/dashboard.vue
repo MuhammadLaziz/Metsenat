@@ -1,9 +1,9 @@
 <template>
-  <div class="w-[1160px] m-auto mt-[48px]">
+  <div class="w-[1160px] min-h-[100vh] m-auto mt-[48px]">
     <div class="flex items-center justify-between mb-[28px]">
       <TotalSum :cardSum="cardSum" />
     </div>
-    <span class="mb-[28px] ">
+    <div class="mb-[28px] w-full bg-[#fff] p-[24px]">
       <h1 class="text-[#2E384D] text-[24px] font-[700] mb-[8px]">
         Homiylar va talabalar soni
       </h1>
@@ -11,9 +11,9 @@
         id="myChart"
         height="400"
         width="1100"
-        class="cursor-pointer bg-[#fff] p-[24px]"
+        class="cursor-pointer "
       ></canvas>
-    </span>
+    </div>
   </div>
 </template>
 
@@ -66,26 +66,19 @@ export default {
       labels: labels,
       datasets: [
         {
-          label: "My First Dataset",
+          label: "Homiylar",
           data: [4000, 220, 700, 3000, 2000, 3000, 4000, 6000, 7000],
           fill: false,
           borderColor: "rgb(75, 192, 192)",
           tension: 0.6,
         },
         {
-          label: "My First Dataset",
+          label: "Talabalar",
           data: [300, 120, 600, 3000, 7000, 3000, 6000, 6000, 1000],
           fill: false,
           borderColor: "rgb(75, 192, 192)",
           tension: 0.6,
-        },
-        {
-          label: "My First Dataset",
-          data: [500, 620, 700, 3000, 1000, 3000, 8000, 6000, 9000],
-          fill: false,
-          borderColor: "rgb(75, 192, 192)",
-          tension: 0.3,
-        },
+        }
       ],
     };
 
@@ -103,6 +96,11 @@ export default {
             }
           }
         },
+        plugins: {
+          subtitle: {
+            
+          }
+        }
       },
     });
     myChart;

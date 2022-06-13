@@ -1,16 +1,6 @@
 <template>
     <div class="">
-        <div class="flex ">
-            <div class="max-w-[850px] m-r-auto pt-[76px] pl-[200px] pr-[102px] bg-[#fff]">
-                <h1 class="text-[40px] font-[700] leading-[56px] w-[423px]">Homiy sifatida ariza topshirish</h1>
-                <div class="flex items-center mt-[40px] mb-[28px] border border-[#E0E7FF] rounded-[6px]">
-                    <div @click="jismoniyHandler" :class="jismoniy ? 'is-active': ''" class="textPerson">Jismoniy shaxs</div>
-                    <div @click="yuridikhandler" :class="yuridik ? 'is-active': ''" class="textPerson">Yuridik shaxs</div>
-                </div>
-                <Register :yuridik="yuridik" />
-            </div>
-            <Comments />
-        </div>
+        
     </div>
 </template>
 

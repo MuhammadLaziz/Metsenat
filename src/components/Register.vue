@@ -21,8 +21,9 @@
       >
       <input
         v-model="telNum"
+        v-maska="'(##)-###-##-##'"
         type="text"
-        placeholder="+998 00 000-00-00"
+        placeholder="(99) 123-45-67"
         class="input"
       />
       <span v-if="v$.telNum.$error" class="error-mes">{{

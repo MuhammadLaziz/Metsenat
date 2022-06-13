@@ -22,10 +22,11 @@
             >Telefon raqam</label
           >
           <input
-          v-model="telNum"
+            v-model="telNum"
+            v-maska="'(##)-###-##-##'"
             type="text"
             id="telNum"
-            placeholder="+998 00 000-00-00"
+            placeholder="(99) 123-45-67"
             class="w-full mt-[8px] bg-[#E0E7FF] text-[#2E384D59] outline-none rounded-[6px] px-[16px] py-[12px] border border-[#E0E7FF]"
           />
           <span v-if="v$.telNum.$error" class="error-mes">{{
@@ -69,6 +70,7 @@
 </template>
 
 <script>
+
 import useVuelidate from '@vuelidate/core';
 import { required, minLength } from '@vuelidate/validators';
 import Plus from '../components/icons/Plus.vue';

@@ -78,23 +78,24 @@
           >Telefon raqam</label
         >
         <input
+        v-maska="'(##)-###-##-##'"
           type="text"
           id="telNum"
-          placeholder="+998 973-72-60"
+          placeholder="(99)-973-72-60"
           class="py-[12px] px-[16px] border mt-[8px] bg-[#E0E7FF] rounded-[6px] text-[#2E384D] border-[#E0E7FF] outline-none"
         />
       </div>
       <div class="flex flex-col">
-        <label for="condition">Holati</label>
+        <label for="condition" class="text-[#1D1D1F] font-[500]">Holati</label>
         <SelectOption :options="conditon" id="condition" />
       </div>
       <div class="flex flex-col">
-        <label>Homiylik summasi</label>
+        <label class="text-[#1D1D1F] font-[500]">Homiylik summasi</label>
         <SelectOption :options="homiylikSummasi" />
       </div>
       <div class="flex flex-col border-b-2 border-[#F5F5F7] pb-[28px]">
-        <label>To‘lov turi</label>
-        <SelectOption :options="homiylikSummasi" />
+        <label class="text-[#1D1D1F] font-[500]">To‘lov turi</label>
+        <SelectOption :options="tolov" />
       </div>
       <div v-if="yuridik" class="flex flex-col">
         <label for="company" class="text-[#1D1D1F] font-[500]"
