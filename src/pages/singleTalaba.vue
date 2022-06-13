@@ -87,7 +87,7 @@
 
   <el-dialog v-model="tahrirlash" title="Tahrirlash" >
     
-    <form class="flex flex-col gap-7 ">
+    <form class="flex flex-col gap-7">
       <div class="flex flex-col">
         <label for="fullName" class="text-[#1D1D1F] font-[500]"
           >F.I.Sh. (Familiya Ism Sharifingiz)</label
@@ -95,8 +95,9 @@
         <input
           type="text"
           id="fullName"
+          v-model="fullName"
           placeholder="Ishmuhammedov Aziz Ishqobilovich"
-          class="py-[12px] px-[16px] border mt-[8px] bg-[#E0E7FF] rounded-[6px] text-[#2E384D] border-[#E0E7FF] outline-none"
+          class="inputs mt-[8px]"
         />
       </div>
       <div class="flex flex-col">
@@ -105,10 +106,11 @@
         >
         <input
         v-maska="'(##)-###-##-##'"
+        v-model="telNum"
           type="text"
           id="telNum"
           placeholder="(99)-973-72-60"
-          class="py-[12px] px-[16px] border mt-[8px] bg-[#E0E7FF] rounded-[6px] text-[#2E384D] border-[#E0E7FF] outline-none"
+          class="inputs mt-[8px] "
         />
       </div>
       <div class="flex flex-col">
@@ -117,7 +119,7 @@
       </div>
       <div class="flex flex-col">
         <label for="kantrakt" class="text-[#1D1D1F] font-[500]">Kontrakt miqdori</label>
-        <input type="text" placeholder="30 000 000 UZS" class="py-[12px] px-[16px] border mt-[8px] bg-[#E0E7FF] rounded-[6px] text-[#2E384D] border-[#E0E7FF] outline-none">
+        <input type="text" v-model="kontrakt" placeholder="30 000 000 UZS" class="inputs">
       </div>
       <button
         class="rounded-[5px] py-[10px] px-[32px] bg-[#3366FF] flex items-center self-end"
@@ -135,6 +137,7 @@
           >F.I.Sh. (Familiya Ism Sharifingiz)</label
         >
         <input
+        v-model="fullName"
           type="text"
           id="fullName"
           placeholder="Ishmuhammedov Aziz Ishqobilovich"
@@ -146,10 +149,11 @@
           >Ajratilingan summa</label
         >
         <input
+        v-model="ajratilgan"
           type="text"
           id="telNum"
           placeholder="Summani kiriting"
-          class="py-[12px] px-[16px] border mt-[8px] bg-[#E0E7FF] rounded-[6px] text-[#2E384D] border-[#E0E7FF] outline-none"
+          class="inputs mt-[8px]  "
         />
       </div>
      
@@ -166,7 +170,7 @@
 </template>
 
 <script>
-import { VueTelInput } from 'vue-tel-input'
+import useVuelidate from "@vuelidate/core";
 import Edit from "../components/icons/Edit.vue";
 import TalabaEdit from "../components/icons/TalabaEdit.vue";
 import PlusBlue from "../components/icons/PlusBlue.vue";
@@ -179,6 +183,10 @@ export default {
     return {
       tahrirlash: false,
       homiyQoshish: false,
+      fullName: '',
+      telNum: '',
+      kontrakt: '',
+      ajratilgan: '',
       otm: [
         { id: 1, title: 'O’zbekiston Davlat Jahon Tillari Universiteti'},
         { id: 2, title: 'O’zbekiston Davlat Milliy Universtet'},
@@ -189,4 +197,17 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+ .inputs {
+  padding: 12px 16px;
+  border-radius: 6px;
+  color: #000;
+  transition: .3s all;
+  background-color: #E0E7FF;
+  outline: none;
+
+  &:focus {
+    border: 2px solid #587cef;
+  }
+ }
+</style>

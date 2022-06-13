@@ -1,8 +1,8 @@
 <template>
   <div class="max-w-[1160px] m-auto">
-    <button @click="this.$router.push('/newStudent')" class="px-[36px] py-[13px] bg-[#3366FF] flex items-center float-right rounded-[5px] text-white my-[28px] ">
+    <button @click="this.$router.push('/newStudent')" class="px-[36px] py-[13px] bg-[#3366FF] flex items-center float-right rounded-[5px] text-white my-[28px] hover:bg-[#0139e0] transition-all">
       <Plus />
-      <p  class="ml-[14px] text-[14px] font-[500]">Talaba qo‘shish</p>
+      <p  class="ml-[14px] text-[14px] font-[500] ">Talaba qo‘shish</p>
     </button>
     <table class="w-full mt-[28px] border-collapse table-wrapper">
       <thead>
@@ -17,14 +17,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in infos" class="bg-[#fff] rounded-[8px] py-[25px]">
+        <tr v-for="item in infos" class="bg-[#fff] rounded-[8px] py-[25px] hover:-translate-y-2 hover:bg-[#e5e3e3] transition-all">
           <td class="pl-[16px] px-[25px] text-left">{{ item.id }}</td>
           <td class="pl-[13px] font-[500] text-[#1D1D1F]">{{ item.name}}</td>
           <td class="pl-[14px] font-[400] text-[#1D1D1F] text-center">{{ item.degree}}</td>
           <td class="w-[200px] pl-[14px] font-[500] text-center">{{ item.university}}</td>
           <td class="pl-[14px] text-center font-[500]">{{ item.spreatedCost}} <span class="text-[#B1B1B8] font-[500]">UZS</span> </td>
           <td class="pl-[14px] text-center font-[500]">{{ item.amoutContract}}</td>
-            <td @click="getTalaba(item.id)" class="pr-[16px] py-[25px] float-right">
+            <td @click="getTalaba(item.id)" class="pr-[16px] py-[25px] float-right cursor-pointer">
               <img src="../assets/images/eye.png" alt="" />
             </td>
         </tr>

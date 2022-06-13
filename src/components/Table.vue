@@ -19,7 +19,7 @@
       <tbody>
         <tr
           v-for="item in homiy"
-          class="bg-[#fff] mt-[12px]"
+          class="bg-[#fff] mt-[12px] hover:-translate-y-2 hover:bg-[#e5e3e3] transition-all"
         >
           <td class="pl-[16px] px-[25px] text-left">{{ item.id }}</td>
           <td class="pl-[13px] font-[500] text-[#1D1D1F] py-[25px]">
@@ -46,7 +46,7 @@
           >
             {{ item.condition }}
           </td>
-          <td @click="getHomiy(item.id)" class="pr-[16px] py-[25px] float-right">
+          <td @click="getHomiy(item.id)" class="pr-[16px] py-[25px] float-right cursor-pointer">
             <img src="../assets/images/eye.png" alt="" />
           </td>
         </tr>

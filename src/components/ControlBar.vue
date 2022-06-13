@@ -30,7 +30,7 @@
       </div>
       <butoon
         @click="dialogFormVisible = true"
-        class="flex items-center px-[32px] py-[13px] ml-[20px] bg-[#EDF1FD] cursor-pointer"
+        class="flex items-center px-[32px] py-[13px] ml-[20px] bg-[#EDF1FD] hover:bg-[#c6d3fc] cursor-pointer transition-all"
       >
         <FilterIcon />
         <p class="font-[500] text-[#3365FC] ml-[10px]">Filter</p>
@@ -205,21 +205,7 @@ export default {
 <style lang="scss">
 
 
-.tab {
-  background: #ffffff;
-  padding: 14px 60px;
-  color: #3366ff99;
-  font-weight: 500;
-  font-size: 12px;
-  cursor: pointer;
-  transition: 0.3s all;
 
-  &.is-active {
-    background-color: #3366ff;
-    color: #fff;
-    border-radius: 4px;
-  }
-}
 .left-b {
   border-left: 2px solid #dde3fb;
 }
@@ -244,6 +230,25 @@ export default {
 }
 </style>
 <style lang="scss" scoped>
+.tab {
+  background: #ffffff;
+  padding: 14px 60px;
+  color: #3366ff99;
+  font-weight: 500;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.3s all;
+
+  &:hover{
+    background-color: #e1e9ff;
+  }
+
+  &.is-active {
+    background-color: #3366ff;
+    color: #fff;
+    border-radius: 4px;
+  }
+}
 .textStyle {
   padding: 16px 43px;
   color: #2e384d;

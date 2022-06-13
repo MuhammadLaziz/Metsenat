@@ -1,7 +1,7 @@
 <template>
   <div
     v-for="sum in cardSum"
-    class="w-[381px] flex items-center p-[24px] bg-[#fff] rounded-[8px]"
+    class="w-[381px] flex items-center p-[24px] bg-[#fff] rounded-[8px] transition-all hover:scale-110"
   >
     <span>
       <img :src="sum.icon" alt="" />
