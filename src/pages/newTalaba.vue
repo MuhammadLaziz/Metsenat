@@ -11,11 +11,10 @@
             type="text"
             id="fullName"
             placeholder="Abdullayev Abdulla Abdulla o’g’li"
+            :class="v$.fullName.$error ? 'border-red-500' : ''"
             class="w-full cursor-pointer mt-[8px] bg-[#E0E7FF] text-[#000] rounded-[6px] outline-none px-[16px] py-[12px] border border-[#E0E7FF] hover:bg-[#a7b4e1] transition-all"
           />
-          <span v-if="v$.fullName.$error" class="error-mes">{{
-            v$.fullName.$errors[0].$message
-          }}</span>
+          
         </div>
         <div class="w-[353px] relative">
           <label for="telNum" class="font-[500] text-[#1D1D1F]"
@@ -27,12 +26,11 @@
             type="text"
             id="telNum"
             placeholder="(99) 123-45-67"
+            :class="v$.telNum.$error ? 'border-red-500' : ''"
             class="w-full cursor-pointer mt-[8px] bg-[#E0E7FF] text-[#000] outline-none rounded-[6px] px-[45px] py-[12px] border border-[#E0E7FF] hover:bg-[#a7b4e1] transition-all"
           />
           <span class="text-[14px] font-[500] absolute top-[58%] left-[3%]">+998</span>
-          <span v-if="v$.telNum.$error" class="error-mes">{{
-            v$.telNum.$errors[0].$message
-          }}</span>
+          
         </div>
       </div>
       <div class="mt-[28px]">
@@ -52,14 +50,13 @@
           >
           <input
           v-model="kontrakt"
-            type="text"
+            type="number"
+            autocomplete="off"
             id="contractPrice"
             placeholder="Summani kiriting"
+            :class="v$.kontrakt.$error ? 'border-red-500' : ''"
             class="w-full mt-[8px] cursor-pointer bg-[#E0E7FF] text-[#000] outline-none rounded-[6px] px-[16px] py-[12px] border border-[#E0E7FF] hover:bg-[#a7b4e1] transition-all"
           />
-          <span v-if="v$.kontrakt.$error" class="error-mes">{{
-            v$.kontrakt.$errors[0].$message
-          }}</span>
         </div>
       </div>
       <button class="px-[32px] py-[13px] bg-[#3366FF] text-white rounded-[5px] flex items-center mt-[28px] float-right hover:scale-105 transition-all">

@@ -60,12 +60,13 @@
 <script>
 import Logo from "../components/icons/Logo.vue";
 import Recaptcha from "../components/icons/Recaptcha.vue";
-
 import useValidate from "@vuelidate/core";
 import { required, minLength } from "@vuelidate/validators";
+import { useToast } from "vue-toastification";
 export default {
   data() {
     return {
+      toast: useToast(),
       v$: useValidate(),
       login: "",
       password: "",
@@ -85,10 +86,12 @@ export default {
   methods: {
     showInfo() {
       this.v$.$validate();
+        this.toast.info("Siz dashboardga otdingiz", {position: "top-center"});
       if (!this.v$.$error) {
+        console.log(this.$toast);
         this.$router.push("/dashboard");
-        console.log("Submited Successfuly");
-        console.log(this.v$);
+        // console.log("Submited Successfuly");
+        // console.log(this.v$);
       } else {
         console.log("invalid action");
       }

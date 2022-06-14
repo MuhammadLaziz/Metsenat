@@ -5,7 +5,7 @@
     >
       <div class="flex items-center justify-between mb-[30px]">
         <h1 class="text-[24px] font-[700] text-[#28293D]">Talaba haqida</h1>
-        <button 
+        <button
           @click="tahrirlash = true"
           class="py-[10px] px-[32px] bg-[#EDF1FD] flex items-center rounded-[5px] hover:bg-[#becbf3] transition-all"
         >
@@ -69,7 +69,7 @@
     <div
       class="w-[790px] m-auto mt-[40px] py-[24px] px-[32px] bg-[#fff] rounded-[12px]"
     >
-      <div class="flex items-center justify-between ">
+      <div class="flex items-center justify-between">
         <h1 class="text-[24px] font-[700] text-[#28293D]">Talabaga homiylar</h1>
         <button
           @click="homiyQoshish = true"
@@ -81,11 +81,11 @@
       </div>
     </div>
     <div class="w-[820px] m-auto">
-        <Rocket />
+      <Rocket />
     </div>
   </div>
 
-  <el-dialog v-model="tahrirlash" title="Tahrirlash" >
+  <el-dialog v-model="tahrirlash" title="Tahrirlash">
     <form class="flex flex-col gap-7" @submit.prevent="talabaTahrirlash">
       <div class="flex flex-col">
         <label for="fullName" class="text-[#1D1D1F] font-[500]"
@@ -95,13 +95,10 @@
           v-model="talabaIsmi"
           type="text"
           id="fullName"
-          
+          :class="v$.talabaIsmi.$error ? 'border-red-500' : ''"
           placeholder="Ishmuhammedov Aziz Ishqobilovich"
           class="input mt-[8px]"
         />
-        <span v-if="v$.talabaIsmi.$error" class="error-mes">{{
-        v$.talabaIsmi.$errors[0].$message
-      }}</span>
       </div>
       <div class="flex flex-col relative">
         <label for="telNum" class="text-[#1D1D1F] font-[500]"
@@ -110,20 +107,31 @@
         <input
           v-maska="'(##)-###-##-##'"
           v-model="talabaNomeri"
+          :class="v$.talabaNomeri.$error ? 'border-red-500' : ''"
           type="text"
           id="telNum"
           placeholder="(99)-973-72-60"
           class="input mt-[8px] pl-l"
         />
-        <span class="text-[14px] font-[500] absolute top-[56%] left-[3%]">+998</span>
+        <span class="text-[14px] font-[500] absolute top-[56%] left-[3%]"
+          >+998</span
+        >
       </div>
       <div class="flex flex-col">
         <label class="text-[#1D1D1F] font-[500]">OTM</label>
-        <SelectOption :options="otm"  />
+        <SelectOption :options="otm" />
       </div>
       <div class="flex flex-col">
-        <label for="kantrakt" class="text-[#1D1D1F] font-[500]">Kontrakt miqdori</label>
-        <input type="text" v-model="kontrakt" placeholder="30 000 000 UZS" class="input">
+        <label for="kantrakt" class="text-[#1D1D1F] font-[500]"
+          >Kontrakt miqdori</label
+        >
+        <input
+          type="text"
+          v-model="kontrakt"
+          placeholder="30 000 000 UZS"
+          :class="v$.kontrakt.$error ? 'border-red-500' : ''"
+          class="input"
+        />
       </div>
       <button
         class="rounded-[5px] py-[10px] px-[32px] bg-[#3366FF] flex items-center self-end"
@@ -134,8 +142,8 @@
     </form>
   </el-dialog>
 
-  <el-dialog v-model="homiyQoshish" title="Homiy qo‘shish" >
-    <form class="flex flex-col gap-7 " @submit.prevent="newHomiy">
+  <el-dialog v-model="homiyQoshish" title="Homiy qo‘shish">
+    <form class="flex flex-col gap-7" @submit.prevent="newHomiy">
       <div class="flex flex-col">
         <label for="fullName" class="text-[#1D1D1F] font-[500]"
           >F.I.Sh. (Familiya Ism Sharifingiz)</label
@@ -146,29 +154,25 @@
           id="fullName"
           placeholder="Ishmuhammedov Aziz Ishqobilovich"
           class="input mt-[8px]"
+          :class="v$.homiyIsmi.$error ? 'border-red-500' : ''"
         />
-        <span v-if="v$.homiyIsmi.$error" class="error-mes">{{
-            v$.homiyIsmi.$errors[0].$message
-          }}</span>
       </div>
       <div class="flex flex-col">
         <label for="telNum" class="text-[#1D1D1F] font-[500]"
           >Ajratilingan summa</label
         >
         <input
-        v-model="kontrakt"
+          v-model="ajratganSumma"
           type="number"
           id="telNum"
           placeholder="Summani kiriting"
-          class="input mt-[8px]  "
+          class="input mt-[8px]"
+          :class="v$.ajratganSumma.$error ? 'border-red-500' : ''"
         />
-        <span v-if="v$.kontrakt.$error" class="error-mes">{{
-            v$.kontrakt.$errors[0].$message
-          }}</span>
       </div>
-     
+
       <button
-      @click="newHomiy"
+        @click="newHomiy"
         class="rounded-[5px] py-[10px] px-[32px] bg-[#3366FF] flex items-center self-end"
       >
         <Plus />
@@ -176,8 +180,6 @@
       </button>
     </form>
   </el-dialog>
-
-
 </template>
 
 <script>
@@ -189,59 +191,61 @@ import PlusBlue from "../components/icons/PlusBlue.vue";
 import Rocket from "../components/icons/Rocket.vue";
 import SelectOption from "../components/SelectOption.vue";
 import Plus from "../components/icons/Plus.vue";
+import { useToast } from "vue-toastification";
 export default {
   components: { Edit, TalabaEdit, PlusBlue, Rocket, SelectOption, Plus },
   data() {
     return {
+      toast: useToast(),
       v$: useVuelidate(),
       tahrirlash: false,
       homiyQoshish: false,
-      talabaIsmi: '',
-      talabaNomeri: '',
-      kontrakt: '',
-      homiyIsmi: '',
-      ajratganSumma: '',
-      ajratilgan: '',
+      talabaIsmi: "",
+      talabaNomeri: "",
+      kontrakt: "",
+      homiyIsmi: "",
+      ajratganSumma: "",
+      ajratilgan: "",
       otm: [
-        { id: 1, title: 'O’zbekiston Davlat Jahon Tillari Universiteti'},
-        { id: 2, title: 'O’zbekiston Davlat Milliy Universtet'},
-      ]
-    }
+        { id: 1, title: "O’zbekiston Davlat Jahon Tillari Universiteti" },
+        { id: 2, title: "O’zbekiston Davlat Milliy Universtet" },
+      ],
+    };
   },
   methods: {
     talabaTahrirlash() {
-      this.v$.$validate()
-      if(!this.v$.$error) {
-        console.log('success');
-      }else {
-        alert('Invalid action')
+      this.v$.$validate();
+      if (!this.v$.$error) {
+        console.log("success");
+      } else {
+        alert("Xatolik kuzatildi");
       }
-      console.log(this.v$.$error ? 'hi' : '5');
-    },  
+      console.log(this.v$.$error ? "hi" : "5");
+    },
     newHomiy() {
-      this.v$.$validate()
-      if(!this.v$.$error) {
-        alert('success');
-      }else {
-        alert('err');
+      this.v$.$validate();
+      if (!this.v$.$error) {
+        alert("success");
+      } else {
+        alert("Xatolik kuzatildi");
       }
-    }
+    },
   },
   validations() {
     return {
-      talabaIsmi: { required, minLength: minLength(10)},
-      talabaNomeri: { required, minLength: minLength(9)},
-      fullName: { required, minLength: minLength(10)},
-      homiyIsmi: { required, minLength: minLength(9)},
-      kontrakt: { required, minLength: minLength(5)}
-    }
-  }
+      talabaIsmi: { required, minLength: minLength(10) },
+      talabaNomeri: { required, minLength: minLength(9) },
+      fullName: { required, minLength: minLength(10) },
+      homiyIsmi: { required, minLength: minLength(9) },
+      kontrakt: { required, minLength: minLength(5) },
+      ajratganSumma: { required, minLength: minLength(5) }
+    };
+  },
 };
 </script>
 
 <style lang="scss" scoped>
- 
- .pl-l {
+.pl-l {
   padding-left: 50px;
 }
 </style>

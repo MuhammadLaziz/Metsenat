@@ -61,16 +61,18 @@
         Yuridik shaxs
       </button>
     </div>
-    <form class="flex flex-col gap-7 mt-[32px]">
+    <form class="flex flex-col gap-7 mt-[32px]" @submit.prevent="homiyTahrirlash">
       <div class="flex flex-col">
         <label for="fullName" class="text-[#1D1D1F] font-[500]"
           >F.I.Sh. (Familiya Ism Sharifingiz)</label
         >
         <input
           type="text"
+          v-model="name"
           id="fullName"
           placeholder="Ishmuhammedov Aziz Ishqobilovich"
           class="input"
+          :class="v$.name.$error ? 'border-red-500' : ''"
         />
       </div>
       <div class="flex flex-col relative">
@@ -78,11 +80,13 @@
           >Telefon raqam</label
         >
         <input
-        v-maska="'(##)-###-##-##'"
+          v-maska="'(##)-###-##-##'"
+          v-model="tel"
           type="text"
           id="telNum"
           placeholder="(99)-973-72-60"
           class="input pl-l"
+          :class="v$.tel.$error ? 'border-red-500' : ''"
         />
         <span class="text-[14px] font-[500] absolute top-[56%] left-[3%]">+998</span>
       </div>
@@ -120,6 +124,8 @@
 </template>
 
 <script>
+import useVuelidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
 import { mapState } from "vuex";
 import Edit from "../components/icons/Edit.vue";
 import SelectOption from "../components/SelectOption.vue";
@@ -128,6 +134,9 @@ import Save from "../components/icons/Save.vue";
 export default {
   data() {
     return {
+      v$: useVuelidate(),
+      tel: '',
+      name: '',
       showModal: false,
       jismoniy: true,
       yuridik: false,
@@ -158,12 +167,27 @@ export default {
       this.jismoniy = false;
       this.yuridik = true;
     },
+    homiyTahrirlash() {
+      this.v$.$validate()
+      if(!this.v$.$error) {
+        alert('Success')
+      }else {
+        alert('bad')
+      }
+    }
   },
+  validations() {
+    return {
+      name: { required },
+      tel: { required }
+    }
+  },  
   computed: {
     ...mapState({
       homiy: (state) => state.homiy.singleHomiy,
     }),
   },
+ 
   components: { Edit, SelectOption, Save },
 };
 </script>

@@ -24,6 +24,7 @@
 </template>
 
 <script>
+
 import Navbar from "./components/Navbar.vue";
 import ControlBar from "./components/ControlBar.vue";
 import TalabalarNav from "./components/TalabalarNav.vue";
@@ -89,5 +90,9 @@ input[type=number] {
 }
 .pl-l {
   padding-left: 50px;
+}
+.el-overlay-dialog {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
 }
 </style>

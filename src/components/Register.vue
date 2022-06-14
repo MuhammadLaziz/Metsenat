@@ -32,7 +32,7 @@
         type="text"
         placeholder="Abdullayev Abdulla Abdulla o’g’li"
         class="input"
-        :class="v$.fullName.$error ? 'border border-red-500' : ''"
+        :class="v$.fullName.$error ? 'border-red-500' : ''"
       />
       <span v-if="v$.fullName.$error" class="error-mes">{{
         v$.fullName.$errors[0].$message
@@ -45,6 +45,7 @@
         v-maska="'(##)-###-##-##'"
         type="text"
         placeholder="(99) 123-45-67"
+        :class="v$.telNum.$error ? 'border-red-500' : ''"
         class="input border-none outline-none active:border pl-l"
       />
       <span class="text-[14px] font-[500] absolute top-[58%] left-[3%]">+998</span>
@@ -103,6 +104,7 @@
         id="company"
         class="input"
         v-model="companyName"
+        :class="v$.companyName.$error ? 'border-red-500' : ''"
         placeholder="Orient group"
       />
     </div>
@@ -116,6 +118,7 @@
 </template>
 
 <script>
+import { useToast } from "vue-toastification";
 import useVuelidate from "@vuelidate/core";
 import { required, minLength } from "@vuelidate/validators";
 import Sums from "./Sums.vue";
@@ -123,6 +126,7 @@ export default {
   emits: ["entered"],
   data() {
     return {
+      toast: useToast(),
       v$: useVuelidate(),
       fullName: "",
       telNum: "",
@@ -169,11 +173,10 @@ export default {
     },
     submit() {
       this.$emit("entered");
-
       this.v$.$validate();
       if (!this.v$.$error) {
         console.log("Submited Successfuly");
-        // this.$router.push("/dashboard");
+        this.toast.info("Siz royhatdan o'tdingiz, kirish - ni bosing", { position: 'top-center'})
       } else {
         console.log("invalid action");
       }

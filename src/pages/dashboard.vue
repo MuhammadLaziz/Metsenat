@@ -67,16 +67,16 @@ export default {
       datasets: [
         {
           label: "Homiylar",
-          data: [4000, 220, 700, 3000, 2000, 3000, 4000, 6000, 7000],
+          data: [1500, 220, 700, 2000, 2000, 3000, 4000, 6000, 7000],
           fill: false,
-          borderColor: "rgb(75, 192, 192)",
+          borderColor: "#4C6FFF",
           tension: 0.6,
         },
         {
           label: "Talabalar",
-          data: [300, 120, 600, 3000, 7000, 3000, 6000, 6000, 1000],
+          data: [300, 120, 600, 3000, 3000, 4000, 3000, 7000, 8000],
           fill: false,
-          borderColor: "rgb(75, 192, 192)",
+          borderColor: "red",
           tension: 0.6,
         }
       ],
