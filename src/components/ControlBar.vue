@@ -52,11 +52,11 @@
         <SelectOption :options="talabalik"/>
       </div>
       <div class="mt-[28px] flex items-center justify-end">
-        <button class="border border-[#3366FF] rounded-[5px] px-[32px] py-[10px] flex items-center">
+        <button class="border border-[#3366FF] rounded-[5px] px-[32px] py-[10px] flex items-center hover:scale-105 transition-all">
           <Clear />
           <p class="ml-[10px] text-[#3366FF] font-[500]">Tozalash</p>
         </button>
-        <button class="border border-[#3366FF] bg-[#3366FF] ml-[16px] rounded-[5px] px-[32px] py-[10px] flex items-center">
+        <button class="border border-[#3366FF] bg-[#3366FF] ml-[16px] rounded-[5px] px-[32px] py-[10px] flex items-center hover:scale-105 transition-all">
           <Eye />
           <p class="ml-[10px] text-[#fff] font-[500]">Natijalarni ko‘rish</p>
         </button>

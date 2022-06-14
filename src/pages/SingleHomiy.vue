@@ -170,9 +170,9 @@ export default {
     homiyTahrirlash() {
       this.v$.$validate()
       if(!this.v$.$error) {
-        alert('Success')
+        alert('Hozircha hammasi yaxshi')
       }else {
-        alert('bad')
+        alert("Xatolik kuzatildi")
       }
     }
   },
