@@ -12,7 +12,7 @@
             type="text"
             v-model.trim="login"
             ref="loginRef"
-            class="border border-[#E0E7FF33] rounded-[6px] bg-[#E0E7FF] py-[12px] px-[15px] mt-[8px]"
+            class="input"
             placeholder="adm8904"
           />
           <span v-if="v$.login.$error" class="error-mes">{{
@@ -24,7 +24,7 @@
           <input
             type="password"
             v-model.trim="password"
-            class="border border-[#E0E7FF33] rounded-[6px] bg-[#E0E7FF] py-[12px] px-[15px] mt-[8px]"
+            class="input"
             placeholder="adm8904"
           />
           <span v-if="v$.password.$error" class="error-mes">{{
@@ -38,7 +38,8 @@
             <input
               type="checkbox"
               v-model="robot"
-              class="mr-[13px] border-2 border-[#C1C1C1] rounded-[4px] w-[26px] h-[26px]"
+              required
+              class="mr-[13px] border-2 border-[#C1C1C1] rounded-[4px] w-[26px] h-[26px] cursor-pointer"
             />
             <p>I’m not a robot</p>
           </div>
@@ -78,7 +79,7 @@ export default {
     return {
       login: { required, minLength: minLength(4) },
       password: { required, minLength: minLength(6) },
-      robot: false,
+      robot: { required }
     };
   },
   methods: {
@@ -103,5 +104,26 @@ export default {
   font-weight: 500;
   font-size: 14px;
   margin-top: 6px;
+}
+.input {
+  width: 100%;
+  padding: 12px 0;
+  padding-left: 16px;
+  background: #b7c8ff33;
+  color: #000;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  margin-top: 8px;
+  outline: none;
+  transition: .3s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(38, 39, 42)33;
+  }
+
+  &:focus {
+    border: 2px solid #849be4;
+  }
 }
 </style>

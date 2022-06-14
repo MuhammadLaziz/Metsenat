@@ -7,7 +7,7 @@
         <h1 class="text-[24px] font-[700] text-[#28293D]">Homiy haqida</h1>
         <button
           @click="showModal = true"
-          class="flex items-center bg-[#EDF1FD] rounded-[5px] px-[32px] py-[9px]"
+          class="flex items-center bg-[#EDF1FD] rounded-[5px] px-[32px] py-[9px] hover:bg-[#c6d3fc] cursor-pointer transition-all"
         >
           <Edit />
           <p class="text-[#3365FC] text-[14px] font-[500]">Tahrirlash</p>
@@ -70,10 +70,10 @@
           type="text"
           id="fullName"
           placeholder="Ishmuhammedov Aziz Ishqobilovich"
-          class="py-[12px] px-[16px] border mt-[8px] bg-[#E0E7FF] rounded-[6px] text-[#2E384D] border-[#E0E7FF] outline-none"
+          class="input"
         />
       </div>
-      <div class="flex flex-col">
+      <div class="flex flex-col relative">
         <label for="telNum" class="text-[#1D1D1F] font-[500]"
           >Telefon raqam</label
         >
@@ -82,8 +82,9 @@
           type="text"
           id="telNum"
           placeholder="(99)-973-72-60"
-          class="py-[12px] px-[16px] border mt-[8px] bg-[#E0E7FF] rounded-[6px] text-[#2E384D] border-[#E0E7FF] outline-none"
+          class="input pl-l"
         />
+        <span class="text-[14px] font-[500] absolute top-[56%] left-[3%]">+998</span>
       </div>
       <div class="flex flex-col">
         <label for="condition" class="text-[#1D1D1F] font-[500]">Holati</label>
@@ -105,7 +106,7 @@
           type="text"
           id="company"
           placeholder="Orient Group"
-          class="py-[12px] px-[16px] border mt-[8px] bg-[#E0E7FF] rounded-[6px] text-[#2E384D] border-[#E0E7FF] outline-none"
+          class="input"
         />
       </div>
       <button
@@ -183,6 +184,9 @@ export default {
     background-color: #3366ff;
     color: #fff;
   }
+}
+.pl-l {
+  padding-left: 50px;
 }
 </style>
 

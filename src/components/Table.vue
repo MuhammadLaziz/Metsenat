@@ -19,7 +19,7 @@
       <tbody>
         <tr
           v-for="item in homiy"
-          class="bg-[#fff] mt-[12px] hover:-translate-y-2 hover:bg-[#e5e3e3] transition-all"
+          class="bg-[#fff] mt-[12px] hover:-translate-y-2 hover:bg-[#e5e3e3] transition-all overflow-hidden"
         >
           <td class="pl-[16px] px-[25px] text-left">{{ item.id }}</td>
           <td class="pl-[13px] font-[500] text-[#1D1D1F] py-[25px]">
@@ -97,5 +97,7 @@ td:first-child{
 }
 td:last-child{
     border-radius: 0 8px 8px 0;
+    background-color: rgb(68, 218, 218);
+    padding-left: 10px;
 }
 </style>

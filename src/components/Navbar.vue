@@ -11,7 +11,9 @@
             <UserNav />
           </span>
         </div>
-        <LogOut class="ml-[43px]" />
+        <router-link to="/">
+          <LogOut class="ml-[43px]" />
+        </router-link>
       </div>
     </div>
   </div>

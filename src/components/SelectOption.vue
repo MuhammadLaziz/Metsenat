@@ -30,4 +30,8 @@ export default {
 .el-input__inner {
   padding: 12px 16px !important;
 }
+.el-input__wrapper {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
 </style>

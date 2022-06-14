@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-bg">
     <HomeNav />
     <div class="flex">
       <div
@@ -44,6 +44,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.main-bg {
+  background-image: url('../assets/images/big-bg.png');
+  background-repeat: no-repeat;
+  z-index: 99;
+  background-position: 180% 180%;
+}
 .textPerson {
   font-weight: 500;
   font-size: 12px;

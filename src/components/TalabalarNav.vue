@@ -10,7 +10,7 @@
                     <span v-else>Talaba qo‘shish</span>
                 </h1>
             </router-link>
-            <button v-if="$route.name == 'singleTalaba'" class="bg-[#EDF1FD] py-[10px] px-[32px] rounded-[5px] flex items-center ">
+            <button v-if="$route.name == 'singleTalaba'" class="bg-[#EDF1FD] py-[10px] px-[32px] rounded-[5px] flex items-center hover:bg-[#d2dcfb] transition-all">
                 <PlusBlue />
                 <p class="text-[14px] text-[#3365FC] font-[500]">Homiy qo‘shish</p>
             </button>

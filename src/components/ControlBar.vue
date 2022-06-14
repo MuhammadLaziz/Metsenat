@@ -30,7 +30,7 @@
       </div>
       <butoon
         @click="dialogFormVisible = true"
-        class="flex items-center px-[32px] py-[13px] ml-[20px] bg-[#EDF1FD] hover:bg-[#c6d3fc] cursor-pointer transition-all"
+        class="flex items-center px-[32px] rounded-[5px] py-[13px] ml-[20px] bg-[#EDF1FD] hover:bg-[#c6d3fc] cursor-pointer transition-all"
       >
         <FilterIcon />
         <p class="font-[500] text-[#3365FC] ml-[10px]">Filter</p>
@@ -72,7 +72,7 @@
   >
     <form>
       <div class="flex flex-col">
-        <label for="select" class="font-[500] text-[12px] mb-[8px]"
+        <label for="select" class="font-[600] text-[12px] mb-[8px]"
           >Ariza holati</label
         >
         <el-select
@@ -90,30 +90,33 @@
           />
         </el-select>
       </div>
-      <div class="flex items-center justify-between flex-wrap">
-        <button
-          @click="boshqasiHandler"
-          type="button"
-          for="boshqasi"
-          :class="boshqasi ? 'bg-[#E0E7FF]' : '', 'textStyle'"
-          class=""
-        >
-          Barchasi
-        </button>
-        <Sums :price="price"/>
+      <div class=" mt-[28px]">
+        <label class="font-[500] text-[12px] block mb-[8px]">Homiylik summasi</label>
+        <div class="grid grid-cols-3 gap-6">
+          <button
+            @click="boshqasiHandler"
+            type="button"
+            for="boshqasi"
+            :class="boshqasi ? 'bg-[#E0E7FF]' : '', 'textStyle'"
+            class="transition-all hover:bg-[#F9FAFF]"
+          >
+            Barchasi
+          </button>
+          <Sums :price="price"/>
+        </div>
       </div>
       <div class="mt-[28px] flex flex-col border-b-2 border-[#E0E7FF] pb-[28px]">
         <label for="date" class="font-[500]">Sana</label>
-        <input type="date" placeholder="kk.oo.yyyy - kk.oo.yyyy" class="w-[253px] bg-[#E0E7FF] border border-[#E0E7FF] rounded-[6px] px-[16px] py-[12px] mt-[8px]">
+        <input type="date" id="date" class="w-[253px] cursor-pointer bg-[#E0E7FF] border border-[#E0E7FF] rounded-[6px] px-[16px] py-[12px] mt-[8px]">
       </div>
       <div class="mt-[28px] flex items-center justify-end">
-        <button class="px-[32px] py-[10px] flex items-center border border-[#B2B7C1] rounded-[5px]">
+        <button class="px-[32px] py-[10px] flex items-center border border-[#B2B7C1] rounded-[5px] hover:border-[#1f4cbd] hover:text-[#1f4cbd] transition-all hover:scale-105">
           <Clear />
           <span class="text-[#B2B7C1] ml-[8px]">Tozalash</span>
         </button>
-        <button class="flex items-center bg-[#3366FF] py-[10px] px-[32px] rounded-[5px] ml-[16px]">
+        <button class="flex items-center bg-[#3366FF] py-[10px] px-[32px] rounded-[5px] ml-[16px] cursor-pointer hover:bg-[#1f4cbd] transition-all hover:scale-105">
           <Eye />
-          <span class="ml-[10px] text-white text-[14px] font-[500] eye-btn">Natijalarni ko‘rish</span>
+          <span class="ml-[10px] text-white text-[14px] font-[500] eye-btn ">Natijalarni ko‘rish</span>
         </button>
       </div>
     </form>

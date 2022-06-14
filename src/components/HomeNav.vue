@@ -21,7 +21,7 @@
                 </li>
             </router-link>
             <router-link to="/auth">
-                <li class="flex items-center">
+                <li class="flex items-center hover:text-[#3366FF]">
                     <img src="../assets/loginNav.png" alt="">
                     <p class="text ml-[7px]">Kirish</p>
                 </li>
@@ -50,6 +50,11 @@ import Logo from './icons/Logo.vue'
         font-weight: 500;
         font-size: 14px;
         color: #28293D;
+        transition: .3s all;
+
+        &:hover{
+            color: #3366FF;
+        }
     }
     .w-full{
         box-shadow: 0px 25px 40px rgba(0, 0, 0, 0.03);

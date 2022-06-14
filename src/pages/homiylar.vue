@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <Homiylar :homiylar="homiy" /> -->
     <div class="max-w-[1160px] m-auto">
       <Table :header="header" :homiy="homiy" />
       <PaginationFooter class="py-[30px]" />
