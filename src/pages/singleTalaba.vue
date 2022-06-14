@@ -95,6 +95,7 @@
           v-model="talabaIsmi"
           type="text"
           id="fullName"
+          maxlength="10"
           :class="v$.talabaIsmi.$error ? 'border-red-500' : ''"
           placeholder="Ishmuhammedov Aziz Ishqobilovich"
           class="input mt-[8px]"
@@ -130,6 +131,7 @@
           v-model="kontrakt"
           placeholder="30 000 000 UZS"
           :class="v$.kontrakt.$error ? 'border-red-500' : ''"
+          maxlength="7"
           class="input"
         />
       </div>
@@ -154,6 +156,7 @@
           id="fullName"
           placeholder="Ishmuhammedov Aziz Ishqobilovich"
           class="input mt-[8px]"
+          maxlength="10"
           :class="v$.homiyIsmi.$error ? 'border-red-500' : ''"
         />
       </div>
@@ -166,6 +169,7 @@
           type="number"
           id="telNum"
           placeholder="Summani kiriting"
+          maxlength="8"
           class="input mt-[8px]"
           :class="v$.ajratganSumma.$error ? 'border-red-500' : ''"
         />

@@ -10,6 +10,7 @@
           v-model="fullName"
             type="text"
             id="fullName"
+            maxlength="10"
             placeholder="Abdullayev Abdulla Abdulla o’g’li"
             :class="v$.fullName.$error ? 'border-red-500' : ''"
             class="w-full cursor-pointer mt-[8px] bg-[#E0E7FF] text-[#000] rounded-[6px] outline-none px-[16px] py-[12px] border border-[#E0E7FF] hover:bg-[#a7b4e1] transition-all"

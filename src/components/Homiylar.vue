@@ -48,7 +48,9 @@
             {{ item.condition }}
           </td>
           <td class="pr-[16px] py-[25px] float-right">
-            <img src="../assets/images/eye.png" alt="" />
+            <router-link :to="`/homiylar/${item.id}`">
+              <img src="../assets/images/eye.png" alt="" />
+            </router-link>
           </td>
         </tr>
       </tbody>

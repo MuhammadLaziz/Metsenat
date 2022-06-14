@@ -12,6 +12,7 @@
             type="text"
             v-model.trim="login"
             ref="loginRef"
+            maxlength="6"
             class="input"
             placeholder="adm8904"
           />
@@ -24,6 +25,7 @@
           <input
             type="password"
             v-model.trim="password"
+            maxlength="6"
             class="input"
             placeholder="adm8904"
           />

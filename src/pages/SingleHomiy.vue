@@ -70,6 +70,7 @@
           type="text"
           v-model="name"
           id="fullName"
+          maxlength="8"
           placeholder="Ishmuhammedov Aziz Ishqobilovich"
           class="input"
           :class="v$.name.$error ? 'border-red-500' : ''"
@@ -109,6 +110,7 @@
         <input
           type="text"
           id="company"
+          maxlength="8"
           placeholder="Orient Group"
           class="input"
         />
