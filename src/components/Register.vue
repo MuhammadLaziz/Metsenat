@@ -55,7 +55,7 @@
         :class="v$.telNum.$error ? 'border-red-500' : '', 'font-[500]'"
         class="input pl-l"
       />
-      <span class="text-[14px] font-[500] absolute top-[58%] left-[4%] sm:left-[3.5%] lg:left-[3%]">+998</span>
+      <span class="text-[14px] font-[500] absolute top-[58%] left-[4%] sm:left-[3.5%] lg:left-[2.5%] lg:top-[57%]">+998</span>
       <span v-if="v$.telNum.$error" class="error-mes">{{
         v$.telNum.$errors[0].$message
       }}</span>

@@ -80,7 +80,7 @@
         </button>
       </div>
     </div>
-    <div class=" m-auto">
+    <div class="m-auto">
       <Rocket class="svg" />
     </div>
   </div>
@@ -190,13 +190,13 @@
 <script>
 import useVuelidate from "@vuelidate/core";
 import { required, minLength } from "@vuelidate/validators";
+import { useToast } from "vue-toastification";
 import Edit from "../components/icons/Edit.vue";
 import TalabaEdit from "../components/icons/TalabaEdit.vue";
 import PlusBlue from "../components/icons/PlusBlue.vue";
 import Rocket from "../components/icons/Rocket.vue";
 import SelectOption from "../components/SelectOption.vue";
 import Plus from "../components/icons/Plus.vue";
-import { useToast } from "vue-toastification";
 export default {
   components: { Edit, TalabaEdit, PlusBlue, Rocket, SelectOption, Plus },
   data() {
