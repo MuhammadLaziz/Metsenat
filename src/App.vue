@@ -74,7 +74,7 @@ input[type=number] {
   background: #e0e7ff33;
   color: #000;
   border-radius: 6px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   margin-top: 8px;
   outline: none;
   transition: 0.3s;
@@ -94,5 +94,9 @@ input[type=number] {
 .el-overlay-dialog {
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px);
+}
+.el-input__wrapper {
+  width: 100%;
+  background-color: #F9FAFF !important;
 }
 </style>

@@ -1,4 +1,5 @@
 <template>
+<div class="px-[15px] md:w-[50%] sm:w-[80%] sm:m-auto">
   <h1 class="text-[40px] font-[700] leading-[56px] w-[423px]">
     Homiy sifatida ariza topshirish
   </h1>
@@ -11,14 +12,19 @@
         :class="jismoniy ? 'is-active' : ''"
         class="textPerson"
       >
+      <p class="hover:scale-105 transition-all">
         Jismoniy shaxs
+      </p>
       </div>
       <div
         @click="yuridikhandler"
         :class="yuridik ? 'is-active' : ''"
         class="textPerson"
       >
-        Yuridik shaxs
+      <p class="hover:scale-110 transition-all">
+        Jismoniy shaxs
+      </p>
+        
       </div>
     </div>
 
@@ -46,10 +52,10 @@
         v-maska="'(##)-###-##-##'"
         type="text"
         placeholder="(99) 123-45-67"
-        :class="v$.telNum.$error ? 'border-red-500' : ''"
-        class="input border-none outline-none active:border pl-l"
+        :class="v$.telNum.$error ? 'border-red-500' : '', 'font-[500]'"
+        class="input pl-l"
       />
-      <span class="text-[14px] font-[500] absolute top-[58%] left-[3%]">+998</span>
+      <span class="text-[14px] font-[500] absolute top-[58%] left-[4%] sm:left-[3.5%] lg:left-[3%]">+998</span>
       <span v-if="v$.telNum.$error" class="error-mes">{{
         v$.telNum.$errors[0].$message
       }}</span>
@@ -85,9 +91,10 @@
       </div>
       <input
         v-if="boshqasi"
-        type="number"
         class="input mt-[18px] col-span-4 appereance-none "
         v-model="active"
+        maxlength="9"
+        v-maska="'#-###-###'"
       />
     </div>
 
@@ -117,6 +124,8 @@
       Yuborish
     </button>
   </form>
+</div>
+  
 </template>
 
 <script>
@@ -212,7 +221,7 @@ export default {
 
 <style lang="scss" scoped>
 .textStyle {
-  display: inline-block;
+  
   width: 100%;
   padding: 16px 32px;
   color: #2e384d;
@@ -247,10 +256,6 @@ export default {
   cursor: pointer;
   transition: 0.3s all;
   border-radius: 4px;
-
-  &:hover {
-    transform: scale(1.1);
-  }
 
   &.is-active {
     background-color: #3366ff;

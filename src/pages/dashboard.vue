@@ -1,6 +1,6 @@
 <template>
-  <div class="w-[1160px] min-h-[100vh] m-auto mt-[48px]">
-    <div class="flex items-center justify-between mb-[28px]">
+  <div class="max-w-[1160px] min-h-[100vh] m-auto mt-[48px]">
+    <div class="flex flex-col flex-wrap sm:flex-row items-stratch justify-between mb-[28px]">
       <TotalSum :cardSum="cardSum" />
     </div>
     <div class="mb-[28px] w-full bg-[#fff] p-[24px]">
@@ -9,8 +9,8 @@
       </h1>
       <canvas
         id="myChart"
-        height="400"
-        width="1100"
+        height="600"
+        width="1000"
         class="cursor-pointer "
       ></canvas>
     </div>

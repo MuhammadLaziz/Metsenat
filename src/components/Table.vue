@@ -1,27 +1,16 @@
 <template>
-    <table class="table-wrapper w-[100%] mt-[48px] ">
+    <table class="table-wrapper table w-full  m-auto mt-[48px] ">
       <thead class="bot">
         <tr>
           <th v-for="h in header" :key="h.id" class="th text-[#B1B1B8] font-[500] bot"> {{ h.head }}</th>
-          <!-- <th class="text-[#B1B1B8] font-[500] text-left bot">f.i.sh.</th>
-          <th class="text-[#B1B1B8] font-[500] pl-[14px] bot">Tel.Raqami</th>
-          <th class="text-[#B1B1B8] font-[500] pl-[14px] bot">
-            Homiylik summasi
-          </th>
-          <th class="text-[#B1B1B8] font-[500] pl-[14px] bot">
-            Sarflangan summa
-          </th>
-          <th class="text-[#B1B1B8] font-[500] pl-[13px] bot">Sana</th>
-          <th class="text-[#B1B1B8] font-[500] pl-[14px] bot">Holati</th>
-          <th class="text-[#B1B1B8] font-[500] pl-[16px] bot">Amallar</th> -->
         </tr>
       </thead>
       <tbody>
         <tr
           v-for="item in homiy"
-          class="bg-[#fff] mt-[12px] hover:-translate-y-2 hover:bg-[#e5e3e3] transition-all overflow-hidden"
+          class="bg-[#fff] mt-[12px] hover:-translate-y-2 hover:bg-[#e5e3e3] transition-all duration-300 overflow-hidden"
         >
-          <td class="pl-[16px] px-[25px] text-left">{{ item.id }}</td>
+          <td class="pl-[16px] px-[25px] text-left text-[15px] font-[400]">{{ item.id }}</td>
           <td class="pl-[13px] font-[500] text-[#1D1D1F] py-[25px]">
             {{ item.name }}
           </td>
@@ -29,10 +18,10 @@
             {{ item.tel }}
           </td>
           <td class="pl-[14px] font-[500] py-[25px] text-center">
-            {{ item.sponsorship }}<span class="text-[#B1B1B8]">UZS</span>
+            {{ item.sponsorship }}<span class="text-[#B1B1B8] ml-[5px]">UZS</span>
           </td>
           <td class="pl-[14px] py-[25px] text-center font-[500]">
-            {{ item.spend }}<span class="text-[#B1B1B8]">UZS</span>
+            {{ item.spend }}<span class="text-[#B1B1B8] ml-[5px]">UZS</span>
           </td>
           <td class="pl-[13px] py-[25px] text-center">{{ item.date }}</td>
           <td
@@ -79,6 +68,7 @@
 
 <style lang="scss">
 .table-wrapper {
+  width: 100%;
   border-spacing: 0 15px;
   border-collapse: separate;
 }
@@ -100,4 +90,47 @@ td:last-child{
     background-color: rgb(68, 218, 218);
     padding-left: 10px;
 }
+</style>
+
+<style scoped>
+  @media (max-width: 700px) {
+  .table thead {
+    display: none;
+  }
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .table tr {
+    margin-top: 15px;
+  }
+  .table td {
+    text-align: left;
+    position: relative;
+  }
+  .table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  td:last-child{
+      width: 100%;
+      padding-left: 40px;
+  }
+  td:first-child{
+    padding-top: 15px;
+}
+}
+
+
 </style>

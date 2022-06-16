@@ -1,74 +1,95 @@
 <template>
-  <div class="py-[24px] bg-[#fff]">
-    <div class="w-[1160px] m-auto flex items-center justify-between">
-      <div class="flex items-center border-2 border-[#E0E7FF] rounded-[6px]">
-        <button @click="dashTab" :class="[dashboard ? 'is-active' : '', 'tab']">
+  <div class="py-[24px] px-1 bg-[#fff]">
+    <div
+      class="max-w-[1200px] lg:flex-row md:flex-col m-auto md:justify-between flex items-center flex-col"
+    >
+      <div
+        class="flex sm:flex-row items-center border-2 border-[#E0E7FF] rounded-[6px]"
+      >
+        <button
+          @click="dashTab"
+          :class="[dashboard ? 'is-active' : '', 'tab']"
+          class="px-[25px] py-[10px] sm:px-[45px] sm:py-[15px]"
+        >
           Dashboard
         </button>
         <button
           @click="sponserTab"
-          :class="[homiylar ? 'is-active' : '', 'tab', 'left-b ']"
+          :class="[homiylar ? 'is-active' : '', 'tab', 'left-b']"
+          class="px-[25px] py-[10px] sm:px-[45px] sm:py-[15px]"
         >
           Homiylar
         </button>
         <button
           @click="studentTab"
           :class="[talabalar ? 'is-active' : '', 'tab', 'left-b']"
+          class="px-[25px] py-[10px] sm:px-[45px] sm:py-[15px]"
         >
           Talabalar
         </button>
       </div>
       <div
-        class="flex items-center ml-[auto] bg-[#E8E8E8] w-[284px] p-[12px] rounded-[4px]"
+        class="flex sm:flex-row md:flex-row items-center mt-[15px] lg:mt-[0]"
       >
-        <SearchIcon />
-        <input
-          type="text"
-          placeholder="Izlash"
-          class="bg-[#E8E8E8] ml-[10px] text-[#B1B1B8] outline-none border-none"
-        />
+        <div
+          class="flex items-center  md:px-[30px] md:py-[15px] bg-[#E8E8E8] w-[60%] m-auto sm:w-[70%]  px-[12px] py-[13px] rounded-[4px] hover:bg-[#f3ecec]"
+        >
+          <SearchIcon />
+          <input
+            type="text"
+            placeholder="Izlash"
+            class="bg-transparent ml-[10px] cursor-pointer border-none outline-none"
+          />
+        </div>
+        <butoon
+          @click="dialogFormVisible = true"
+          class="flex items-center px-[12px] md:px-[30px] md:py-[15px] rounded-[5px] py-[13px] ml-[20px] bg-[#EDF1FD] hover:bg-[#c6d3fc] cursor-pointer transition-all"
+        >
+          <FilterIcon />
+          <p class="font-[500] text-[#3365FC] ml-[10px]">Filter</p>
+        </butoon>
       </div>
-      <butoon
-        @click="dialogFormVisible = true"
-        class="flex items-center px-[32px] rounded-[5px] py-[13px] ml-[20px] bg-[#EDF1FD] hover:bg-[#c6d3fc] cursor-pointer transition-all"
-      >
-        <FilterIcon />
-        <p class="font-[500] text-[#3365FC] ml-[10px]">Filter</p>
-      </butoon>
     </div>
   </div>
-  <el-dialog v-if="this.$route.href == '/talabalar'"
+
+  <el-dialog
+    v-if="this.$route.href == '/talabalar'"
     v-model="dialogFormVisible"
     title="Filter"
     class="text-[#28293D] text-[24px] font-[700]"
   >
     <form>
       <div>
-        <label class="text-[12px] font-[500] text-[#1D1D1F]">Talabalik turi</label>
+        <label class="text-[12px] font-[500] text-[#1D1D1F]"
+          >Talabalik turi</label
+        >
         <SelectOption :options="talabalik"/>
       </div>
       <div class="mt-[28px] border-b-2 border-[#F5F5F7] pb-[28px]">
         <label class="text-[12px] font-[500] text-[#1D1D1F]">OTM</label>
-        <SelectOption :options="talabalik"/>
+        <SelectOption :options="talabalik" />
       </div>
-      <div class="mt-[28px] flex items-center justify-end">
-        <button class="border border-[#3366FF] rounded-[5px] px-[32px] py-[10px] flex items-center hover:scale-105 transition-all">
+      <div class="flex-col mt-[28px] md:flex-row flex items-center justify-end">
+        <button
+          class="border mb-3 md:mb-0 border-[#3366FF] rounded-[5px] px-[12px] py-[10px] flex items-center hover:scale-105 transition-all"
+        >
           <Clear />
           <p class="ml-[10px] text-[#3366FF] font-[500]">Tozalash</p>
         </button>
-        <button class="border border-[#3366FF] bg-[#3366FF] ml-[16px] rounded-[5px] px-[32px] py-[10px] flex items-center hover:scale-105 transition-all">
+        <button
+          class="border border-[#3366FF] bg-[#3366FF] ml-[16px] rounded-[5px] px-[12px] py-[10px] flex items-center hover:scale-105 transition-all"
+        >
           <Eye />
           <p class="ml-[10px] text-[#fff] font-[500]">Natijalarni ko‘rish</p>
         </button>
       </div>
     </form>
-    
   </el-dialog>
   <el-dialog
     v-else
     v-model="dialogFormVisible"
     title="Filter"
-    class="text-[#28293D] text-[24px] font-[700]"
+    class="text-[#28293D] text-[24px] font-[700] !w-[50%]"
   >
     <form>
       <div class="flex flex-col">
@@ -90,33 +111,47 @@
           />
         </el-select>
       </div>
-      <div class=" mt-[28px]">
-        <label class="font-[500] text-[12px] block mb-[8px]">Homiylik summasi</label>
-        <div class="grid grid-cols-3 gap-6">
+      <div class="mt-[28px]">
+        <label class="font-[500] text-[12px] block mb-[8px]"
+          >Homiylik summasi</label
+        >
+        <div class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
           <button
             @click="boshqasiHandler"
             type="button"
             for="boshqasi"
-            :class="boshqasi ? 'bg-[#E0E7FF]' : '', 'textStyle'"
-            class="transition-all hover:bg-[#F9FAFF]"
+            :class="(boshqasi ? 'bg-[#E0E7FF]' : '', 'textStyle py-[10px]')"
+            class="transition-all hover:bg-[#F9FAFF] text-left"
           >
             Barchasi
           </button>
-          <Sums :price="price"/>
+          <Sums :price="price" />
         </div>
       </div>
-      <div class="mt-[28px] flex flex-col border-b-2 border-[#E0E7FF] pb-[28px]">
+      <div
+        class="mt-[28px] flex flex-col border-b-2 border-[#E0E7FF] pb-[28px]"
+      >
         <label for="date" class="font-[500]">Sana</label>
-        <input type="date" id="date" class="w-[253px] cursor-pointer bg-[#E0E7FF] border border-[#E0E7FF] rounded-[6px] px-[16px] py-[12px] mt-[8px]">
+        <input
+          type="date"
+          id="date"
+          class="max-w-[253px] cursor-pointer bg-[#E0E7FF] border border-[#E0E7FF] rounded-[6px] px-[16px] py-[12px] mt-[8px]"
+        />
       </div>
-      <div class="mt-[28px] flex items-center justify-end">
-        <button class="px-[32px] py-[10px] flex items-center border border-[#B2B7C1] rounded-[5px] hover:border-[#1f4cbd] hover:text-[#1f4cbd] transition-all hover:scale-105">
+      <div class="mt-[28px] flex items-center justify-end flex-col lg:flex-row mb-[5px]">
+        <button
+          class="px-[32px] py-[10px] flex mb-[5px] lg:mb-0 items-center border border-[#B2B7C1] rounded-[5px] hover:border-[#1f4cbd] hover:text-[#1f4cbd] transition-all hover:scale-105"
+        >
           <Clear />
           <span class="text-[#B2B7C1] ml-[8px]">Tozalash</span>
         </button>
-        <button class="flex items-center bg-[#3366FF] py-[10px] px-[32px] rounded-[5px] ml-[16px] cursor-pointer hover:bg-[#1f4cbd] transition-all hover:scale-105">
+        <button
+          class="flex items-center bg-[#3366FF] py-[10px] px-[32px] rounded-[5px] ml-[16px] cursor-pointer hover:bg-[#1f4cbd] transition-all hover:scale-105"
+        >
           <Eye />
-          <span class="ml-[10px] text-white text-[14px] font-[500] eye-btn ">Natijalarni ko‘rish</span>
+          <span class="ml-[10px] text-white text-[14px] font-[500] eye-btn"
+            >Natijalarni ko‘rish</span
+          >
         </button>
       </div>
     </form>
@@ -142,8 +177,8 @@ export default {
       boshqasi: false,
       value: "",
       options: [
-        { id: 5, option: 'Bekor qilingan'},
-        { id: 4, option: 'Tasdiqlangan'},
+        { id: 5, option: "Bekor qilingan" },
+        { id: 4, option: "Tasdiqlangan" },
         { id: 3, option: "Moderatsiyada" },
         { id: 2, option: "Yangi" },
         { id: 1, option: "Barchasi" },
@@ -171,10 +206,10 @@ export default {
         },
       ],
       talabalik: [
-        { id: 1, title: 'Barchasi'},
-        { id: 2, title: 'Bakalavr'},
-        { id: 3, title: 'Magistr'}
-      ]
+        { id: 1, title: "Barchasi" },
+        { id: 2, title: "Bakalavr" },
+        { id: 3, title: "Magistr" },
+      ],
     };
   },
   methods: {
@@ -206,14 +241,17 @@ export default {
 </script>
 
 <style lang="scss">
-
-
-
+.el-select {
+  width: 100% !important;
+}
+.m-2 {
+  margin: 8px 0 !important;
+}
 .left-b {
   border-left: 2px solid #dde3fb;
 }
 .el-dialog {
-  width: 40% !important;
+  // width: 40% !important;
   border-radius: 12px !important;
 
   &__title {
@@ -227,22 +265,25 @@ export default {
     border-bottom: 2px solid #f5f5f7;
   }
 }
-.el-input__wrapper {
-  width: 100%;
-  background-color: #E0E7FF !important;
-}
 </style>
 <style lang="scss" scoped>
+.added {
+  border: 2px solid transparent;
+
+  &:focus {
+    border: 2px solid #c0c0c0;
+  }
+}
 .tab {
   background: #ffffff;
-  padding: 14px 60px;
+  // padding: 14px 60px;
   color: #3366ff99;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 12px;
   cursor: pointer;
   transition: 0.3s all;
 
-  &:hover{
+  &:hover {
     background-color: #e1e9ff;
   }
 
@@ -253,22 +294,14 @@ export default {
   }
 }
 .textStyle {
-  padding: 16px 43px;
   color: #2e384d;
+  padding: 16px 32px;
   font-weight: 500;
   font-size: 18px;
   border: 2px solid #e0e7ff;
 }
 .eye-btn {
-  box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
+  box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04),
+    0px 2px 4px rgba(96, 97, 112, 0.16);
 }
-</style>
-
-<style>
-  .el-select {
-    width: 100% !important;
-  }
-  .m-2{
-    margin: 8px 0 !important;
-  }
 </style>

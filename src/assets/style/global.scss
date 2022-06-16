@@ -1,1 +1,4 @@
-@import './tailwindcss'
+@import './tailwindcss';
+input:focus-visible{
+    outline: none
+}

@@ -1,30 +1,23 @@
 <template>
-  <div class="main-bg">
-    <HomeNav />
-    <div class="flex">
-      <div
-        class="max-w-[850px] m-r-auto pt-[76px] pl-[200px] pr-[102px] bg-[#fff]"
-      >
-        <Register
-          v-if="entered"
-          @entered="entered = false"
-          :yuridik="yuridik"
-        />
+  <HomeNav />
+  <div class="liner-bg">
+    <div class="main-bg">
+      <div class="max-w-[1200px] min-h-[100vh] m-auto bg-[#fff] m-auto flex justify-between pt-[60px] flex-col-reverse md:flex-row lg:bg-inherit lg-flex-row ">
+        <Register v-if="entered" @entered="entered = false" :yuridik="yuridik" />
         <Successful v-else />
+        <Comments class="px-[15px]" />
       </div>
-      <Comments />
     </div>
   </div>
 </template>
 
 <script>
 import HomeNav from "../components/HomeNav.vue";
-import AppAsSponsor from "../components/AppAsSponsor.vue";
 import Register from "../components/Register.vue";
 import Comments from "../components/Comments.vue";
 import Successful from "../components/Successful.vue";
 export default {
-  components: { HomeNav, AppAsSponsor, Register, Comments, Successful },
+  components: { HomeNav, Register, Comments, Successful },
   data() {
     return {
       jismoniy: true,
@@ -44,12 +37,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .main-bg {
-  background-image: url('../assets/images/big-bg.png');
+  background-image: url("../assets/images/big-bg.png");
   background-repeat: no-repeat;
-  z-index: 99;
-  background-position: 180% 180%;
+  background-size: 50%;
+  background-position: 140% 130%;
 }
 .textPerson {
   font-weight: 500;
@@ -63,5 +55,8 @@ export default {
     background-color: #3366ff;
     color: #fff;
   }
+}
+.liner-bg {
+  background-image: linear-gradient(to right, #fff 55%, #F5F5F7 45%);
 }
 </style>

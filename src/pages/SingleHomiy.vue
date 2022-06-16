@@ -1,13 +1,13 @@
 <template>
   <div
-    class="w-[1160px] m-auto max-h-[100vh] flex items-center justify-between"
+    class="max-w-[1160px] m-auto max-h-[100vh] flex items-center justify-between"
   >
-    <div class="w-[793px] m-auto p-[32px] bg-[#fff] rounded-[12px] mt-[40px]">
-      <div class="flex items-center justify-between ]">
+    <div class="max-w-[90%] m-auto p-[32px] bg-[#fff] rounded-[12px] mt-[40px]">
+      <div class="flex flex-col sm:flex-row items-center justify-between ]">
         <h1 class="text-[24px] font-[700] text-[#28293D]">Homiy haqida</h1>
         <button
           @click="showModal = true"
-          class="flex items-center bg-[#EDF1FD] rounded-[5px] px-[32px] py-[9px] hover:bg-[#c6d3fc] cursor-pointer transition-all"
+          class="flex items-center mt-[10px] sm:mt-[0] bg-[#EDF1FD] rounded-[5px] px-[32px] py-[9px] hover:bg-[#c6d3fc] cursor-pointer transition-all"
         >
           <Edit />
           <p class="text-[#3365FC] text-[14px] font-[500]">Tahrirlash</p>
@@ -15,11 +15,11 @@
       </div>
       <div class="mt-[26px] flex items-center">
         <span
-          class="w-[64px] h-[64px] bg-[#EAECF0] flex items-center justify-center rounded-[6px] border border-[#E0E7FF]"
+          class="p-[20px] bg-[#EAECF0]  rounded-[6px] border border-[#E0E7FF]"
         >
           <img src="../assets/avatar.png" alt="" />
         </span>
-        <p class="w-[163px] text-[16px] font-[500] text-[#212121] ml-[20px]">
+        <p class="max-w-[163px] text-[16px] font-[500] text-[#212121] ml-[20px]">
           {{ homiy.name }}
         </p>
       </div>
@@ -44,19 +44,19 @@
 
   <el-dialog v-model="showModal" title="Tahrirlash" class="el-width">
     <div
-      class="w-full border border-[#E0E7FF] rounded-[6px] flex items-center justify-between transition-all"
+      class="w-full border border-[#E0E7FF] rounded-[6px] flex items-center justify-between flex-col md:flex-row transition-all"
     >
       <button
         @click="jsmoniyHandler"
         :class="[jismoniy ? 'is-active' : '']"
-        class="textPerson"
+        class="textPerson w-[100%] px-[40px] py-[10px]"
       >
         Jismoniy shaxs
       </button>
       <button
         @click="yuridikHandler"
         :class="[yuridik ? 'is-active' : '']"
-        class="textPerson"
+        class="textPerson w-[100%] px-[40px] py-[10px]"
       >
         Yuridik shaxs
       </button>
@@ -89,7 +89,7 @@
           class="input pl-l"
           :class="v$.tel.$error ? 'border-red-500' : ''"
         />
-        <span class="text-[14px] font-[500] absolute top-[56%] left-[3%]">+998</span>
+        <span class="text-[14px] font-[500] absolute top-[56%] left-[5%] md:left-[4%] lg:left-[2.5%] xl:left-[2%]">+998</span>
       </div>
       <div class="flex flex-col">
         <label for="condition" class="text-[#1D1D1F] font-[500]">Holati</label>
@@ -196,12 +196,11 @@ export default {
 
 <style lang="scss" scoped>
 .textPerson {
-  width: 50%;
   font-weight: 500;
   font-size: 12px;
   color: rgba(51, 102, 255, 0.6);
   letter-spacing: 1.125px;
-  padding: 14px 89px;
+  // padding: 14px 89px;
   cursor: pointer;
   transition: 0.3s all;
   border-radius: 4px;

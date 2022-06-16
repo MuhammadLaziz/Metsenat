@@ -1,8 +1,8 @@
 <template>
   <div class="max-w-[1160px] h-[872px] flex justify-center m-auto mt-[40px]">
-    <form @submit.prevent="submit" class="w-[790px] h-[466px] bg-[#fff] p-[28px] rounded-[12px]">
-      <div class="flex items-center justify-between">
-        <div class="w-[353px]">
+    <form @submit.prevent="submit" class="w-[400px] sm:w-[590px] md:w-[790px] h-[650px] md:h-[500px] bg-[#fff] p-[28px] rounded-[12px]">
+      <div class="flex items-center justify-between flex-col md:flex-row">
+        <div class="w-full md:w-[350px]">
           <label for="fullName" class="font-[500] text-[#1D1D1F]"
             >F.I.Sh. (Familiya Ism Sharif)</label
           >
@@ -13,11 +13,11 @@
             maxlength="10"
             placeholder="Abdullayev Abdulla Abdulla o’g’li"
             :class="v$.fullName.$error ? 'border-red-500' : ''"
-            class="w-full cursor-pointer mt-[8px] bg-[#E0E7FF] text-[#000] rounded-[6px] outline-none px-[16px] py-[12px] border border-[#E0E7FF] hover:bg-[#a7b4e1] transition-all"
+            class="input"
           />
           
         </div>
-        <div class="w-[353px] relative">
+        <div class="w-full md:w-[350px] relative mt-[15px]">
           <label for="telNum" class="font-[500] text-[#1D1D1F]"
             >Telefon raqam</label
           >
@@ -28,35 +28,35 @@
             id="telNum"
             placeholder="(99) 123-45-67"
             :class="v$.telNum.$error ? 'border-red-500' : ''"
-            class="w-full cursor-pointer mt-[8px] bg-[#E0E7FF] text-[#000] outline-none rounded-[6px] px-[45px] py-[12px] border border-[#E0E7FF] hover:bg-[#a7b4e1] transition-all"
+            class="input pl-l"
           />
-          <span class="text-[14px] font-[500] absolute top-[58%] left-[3%]">+998</span>
+          <span class="text-[14px] font-[500] absolute top-[58%] left-[4%] sm:top-[58%] sm:left-[4%] md:top-[58%] sm:left-[5%]">+998</span>
           
         </div>
       </div>
-      <div class="mt-[28px]">
+      <div class="mt-[15px]">
         <label for="university" class="font-[500] text-[#1D1D1F]">OTM</label>
         <SelectOption :options="universities" />
       </div>
-      <div class="mt-[28px] flex items-center justify-between border-b-2 border-[#F5F5F7] pb-[28px]">
-          <div class="w-[353px] flex flex-col">
+      <div class="mt-[15px] flex items-center flex-col md:flex-row justify-between border-b-2 border-[#F5F5F7] pb-[28px]">
+          <div class="w-full md:w-[350px] flex flex-col">
             <label for="degree" class="font-[500] text-[#1D1D1F]"
                 >Talabalik turi</label
             >
             <SelectOption :options="degree" />
         </div>
-        <div class="w-[353px]">
+        <div class="w-full md:w-[350px] mt-[10px] md:mt-[0]">
           <label for="contractPrice" class="font-[500] text-[#1D1D1F]"
             >Kontrakt summa</label
           >
           <input
-          v-model="kontrakt"
-            type="number"
+            v-model="kontrakt"
             autocomplete="off"
             id="contractPrice"
+            v-maska="'#-###-###'"
             placeholder="Summani kiriting"
             :class="v$.kontrakt.$error ? 'border-red-500' : ''"
-            class="w-full mt-[8px] cursor-pointer bg-[#E0E7FF] text-[#000] outline-none rounded-[6px] px-[16px] py-[12px] border border-[#E0E7FF] hover:bg-[#a7b4e1] transition-all"
+            class="input"
           />
         </div>
       </div>

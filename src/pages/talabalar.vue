@@ -1,10 +1,10 @@
 <template>
   <div class="max-w-[1160px] m-auto">
-    <button @click="this.$router.push('/newStudent')" class="px-[36px] py-[13px] bg-[#3366FF] flex items-center float-right rounded-[5px] text-white my-[28px] hover:bg-[#0139e0] transition-all">
+    <button @click="this.$router.push('/newStudent')" class="px-[36px] fixed sm:static z-50 md:initial top-[35%] py-[13px] bg-[#3366FF] flex items-center float-right rounded-[5px] text-white my-[28px] hover:bg-[#0139e0] transition-all">
       <Plus />
-      <p  class="ml-[14px] text-[14px] font-[500] ">Talaba qo‘shish</p>
+      <p  class="ml-[14px] text-[14px] font-[500] hidden md:block">Talaba qo‘shish</p>
     </button>
-    <table class="w-full mt-[28px] border-collapse table-wrapper">
+    <table class=" table-wrapper m-auto table">
       <thead>
         <tr>
           <th class="text-[#B1B1B8] font-[500]  pl-[16px] text-left">#</th>
@@ -17,7 +17,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in infos" class="bg-[#fff] rounded-[8px] py-[25px] hover:-translate-y-2 hover:bg-[#e5e3e3] transition-all">
+        <tr v-for="item in infos" class="bg-[#fff] rounded-[8px] mt-[12px] py-[25px] hover:-translate-y-2 duration-300 hover:bg-[#e5e3e3] transition-all">
           <td class="pl-[16px] px-[25px] text-left">{{ item.id }}</td>
           <td class="pl-[13px] font-[500] text-[#1D1D1F]">{{ item.name}}</td>
           <td class="pl-[14px] font-[400] text-[#1D1D1F] text-center">{{ item.degree}}</td>
@@ -73,7 +73,66 @@ export default {
 
 <style lang="scss" scoped>
 .table-wrapper {
+  width: 100%;
   border-spacing: 0 15px;
   border-collapse: separate;
+  
+}
+.bot {
+   padding-bottom: 12px;
+}
+.th:first-child{
+    text-align: left;
+    padding-left: 16px;
+}
+.th:nth-child(2){
+    text-align: left;
+}
+td:first-child{
+    border-radius: 8px 0 0 8px;
+}
+td:last-child{
+    border-radius: 0 8px 8px 0;
+    background-color: rgb(68, 218, 218);
+    padding-left: 10px;
+}
+
+@media (max-width: 700px) {
+  .table thead {
+    display: none;
+  }
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .table tr {
+    margin: 15px auto;
+  }
+  .table td {
+    text-align: left;
+    position: relative;
+  }
+  .table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  td:last-child{
+      width: 100%;
+      padding-left: 40px;
+  }
+  td:first-child{
+    padding-top: 15px;
+}
 }
 </style>

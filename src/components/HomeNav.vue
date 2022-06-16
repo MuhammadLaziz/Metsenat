@@ -1,34 +1,67 @@
 <template>
-<div class="w-full bg-[#fff]">
-    <div class="max-w-[1160px] m-auto flex items-center justify-between p-[30px]">
-        <router-link to="/">
+<div class="bg-[#fff]">
+    <div class="max-w-[1200px] px-2 m-auto flex items-center justify-between py-[30px] relative pr-[10px]">
+        <router-link to="/" >
             <Logo />
         </router-link>
-        <ul class="flex items-center space-x-5">
+        <div class="text-[24px] ">
+                <i @click="menu = true" class="fa-solid fa-bars md:hidden" :class="menu ? 'hidden' : 'block'"></i>
+                <i @click="menu = false" :class="menu ? 'block' : 'hidden'" class="fa-solid fa-xmark lg:hidden"></i>
+            </div>
+        <ul class="flex items-center space-x-5 hidden md:flex">
             <router-link to="/dashboard">
-                <li>
+                <li class="">
                     <p class="text">Asosiy</p>
                 </li>
             </router-link>
             <router-link to="/dashboard">
-                <li>
+                <li class="">
                     <p class="text">Grantlar</p>
                 </li>
             </router-link>
             <router-link to="/dashboard">
-                <li>
+                <li class="">
                     <p class="text">Soliq imtiyozlari</p>
                 </li>
             </router-link>
+            <br>
             <router-link to="/auth">
-                <li class="flex items-center hover:text-[#3366FF]">
+                <li class="flex items-center ">
                     <img src="../assets/loginNav.png" alt="">
                     <p class="text ml-[7px]">Kirish</p>
                 </li>
             </router-link>
-            <router-link to="/">
-                <li>
-                    <p class="text-[#3366FF] font-[500] px-[32px] border-2 border-[#3366FF] rounded-[8px] py-[8px]">Ro‘yxatdan o’tish</p>
+            <router-link to="/auth">
+                <li class="hover:scale-[95%] transition-all ">
+                    <p class="text-[#3366FF] sm:p-[8px] font-[400] border-2 border-[#3366FF] rounded-[8px]">Ro‘yxatdan o’tish</p>
+                </li> 
+            </router-link>
+        </ul>
+        <ul class="flex flex-col top-[100%] left-[0%] md:hidden space-x-5 absolute bg-[#fff] min-h-[100vh] overflow-hidden w-full -translate-x-[100%] transition-all duration-500 " :class="menu ? 'translate-x-[0]': '-translate-x-[100%]'">
+            <router-link to="/dashboard">
+                <li class="mb-[10px] ml-[20px]">
+                    <p class="text">Asosiy</p>
+                </li>
+            </router-link>
+            <router-link to="/dashboard">
+                <li class="mb-[10px]">
+                    <p class="text">Grantlar</p>
+                </li>
+            </router-link>
+            <router-link to="/dashboard">
+                <li class="mb-[10px]">
+                    <p class="text">Soliq imtiyozlari</p>
+                </li>
+            </router-link>
+            <router-link to="/auth">
+                <li class="flex items-center mb-[10px]">
+                    <img src="../assets/loginNav.png" alt="">
+                    <p class="text ml-[7px]">Kirish</p>
+                </li>
+            </router-link>
+            <router-link to="/auth">
+                <li class="hover:scale-[95%] transition-all ">
+                    <p class="text-[#3366FF] font-[500] px-[32px] py-[8px] w-[90%] border-2 border-[#3366FF] rounded-[8px]">Ro‘yxatdan o’tish</p>
                 </li> 
             </router-link>
         </ul>
@@ -41,6 +74,11 @@ import Logo from './icons/Logo.vue'
     export default {
         components: {
             Logo
+        },
+        data() {
+            return {
+                menu: false
+            }
         }
     }
 </script>

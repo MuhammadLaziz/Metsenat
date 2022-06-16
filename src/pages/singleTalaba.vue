@@ -1,7 +1,7 @@
 <template>
-  <div class="w-[1160px] m-auto">
+  <div class="max-w-[1160px] m-auto">
     <div
-      class="w-[790px] m-auto mt-[40px] py-[24px] px-[32px] bg-[#fff] rounded-[12px]"
+      class="max-w-[90%]  m-auto mt-[40px] py-[24px] px-[32px] bg-[#fff] rounded-[12px]"
     >
       <div class="flex items-center justify-between mb-[30px]">
         <h1 class="text-[24px] font-[700] text-[#28293D]">Talaba haqida</h1>
@@ -35,7 +35,7 @@
       <p class="text-[16px] font-[500] text-[#212121]">+998 99 973-72-60</p>
       <span class="flex items-center mt-[32px] mb-[24px]">
         <p
-          class="w-[233px] h-[18px] bg-[#E5EBFF] text-[#3366FF] text-[12px] font-[500] flex items-center justify-center"
+          class="max-w-[433px] bg-[#E5EBFF] text-[#3366FF] text-[12px] font-[500] p-[10px] rounded-[5px]"
         >
           O‘qish joyi haqida ma’lumot
         </p>
@@ -67,7 +67,7 @@
       </div>
     </div>
     <div
-      class="w-[790px] m-auto mt-[40px] py-[24px] px-[32px] bg-[#fff] rounded-[12px]"
+      class="max-w-[90%] m-auto mt-[40px] py-[24px] px-[32px] bg-[#fff] rounded-[12px]"
     >
       <div class="flex items-center justify-between">
         <h1 class="text-[24px] font-[700] text-[#28293D]">Talabaga homiylar</h1>
@@ -80,8 +80,8 @@
         </button>
       </div>
     </div>
-    <div class="w-[820px] m-auto">
-      <Rocket />
+    <div class=" m-auto">
+      <Rocket class="svg" />
     </div>
   </div>
 
@@ -114,7 +114,7 @@
           placeholder="(99)-973-72-60"
           class="input mt-[8px] pl-l"
         />
-        <span class="text-[14px] font-[500] absolute top-[56%] left-[3%]"
+        <span class="text-[14px] font-[500] absolute top-[56%] left-[6%] md:left-[5%] lg:left-[3%] xl:left-[2%]"
           >+998</span
         >
       </div>
@@ -129,14 +129,15 @@
         <input
           type="text"
           v-model="kontrakt"
+          v-maska="'#-###-###'"
+          maxlength="9"
           placeholder="30 000 000 UZS"
           :class="v$.kontrakt.$error ? 'border-red-500' : ''"
-          maxlength="7"
           class="input"
         />
       </div>
       <button
-        class="rounded-[5px] py-[10px] px-[32px] bg-[#3366FF] flex items-center self-end"
+        class="rounded-[5px] py-[10px] px-[32px] bg-[#3366FF] hover:bg-[#7997f1] transition-all flex items-center self-end"
       >
         <Save />
         <p class="text-white font-[500] ml-[10px]">Saqlash</p>
@@ -166,10 +167,10 @@
         >
         <input
           v-model="ajratganSumma"
-          type="number"
           id="telNum"
           placeholder="Summani kiriting"
-          maxlength="8"
+          v-maska="'#-###-###'"
+          maxlength="9"
           class="input mt-[8px]"
           :class="v$.ajratganSumma.$error ? 'border-red-500' : ''"
         />
@@ -177,7 +178,7 @@
 
       <button
         @click="newHomiy"
-        class="rounded-[5px] py-[10px] px-[32px] bg-[#3366FF] flex items-center self-end"
+        class="rounded-[5px] py-[10px] px-[32px] bg-[#3366FF] hover:bg-[#86a2f9] transition-all flex items-center self-end"
       >
         <Plus />
         <p class="text-white font-[500] ml-[10px]">Saqlash</p>
@@ -251,5 +252,9 @@ export default {
 <style lang="scss" scoped>
 .pl-l {
   padding-left: 50px;
+}
+.svg {
+  width: 400px;
+  margin: 0 auto;
 }
 </style>

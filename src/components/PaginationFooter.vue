@@ -1,10 +1,10 @@
 <template>
-    <div class="w-[1160px] m-auto">
-        <div class="flex items-center justify-between">
-            <span>59 tadan  1-10 ko‘rsatilmoqda</span>
-            <div class="flex items-center">
-                <p class="text-[#1D1D1F] text-[15px] font-[400] mr-[12px]">Ko‘rsatish</p>
-                <el-select v-model="value" size="small" filterable class="mr-[20px]">
+    <div class="max-w-[1160px] m-auto">
+        <div class="flex items-center flex-col lg:flex-row lg:justify-between">
+            <span class="mb-[5px]">59 tadan  1-10 ko‘rsatilmoqda</span>
+            <div class="flex items-center flex-col lg:flex-row">
+                <p class="text-[#1D1D1F] text-[15px] font-[400] mr-[12px] mb-[5px]">Ko‘rsatish</p>
+                <el-select v-model="value" size="small" filterable class="mr-[20px] w-[60px]">
                     <el-option
                     v-for="item in options"
                     :key="item.id"
@@ -12,7 +12,7 @@
                     :value="item.value"
                     />
                 </el-select>
-                <div class="example-pagination-block">
+                <div class="example-pagination-block mt-[5px]">
                     <el-pagination layout="prev, pager, next" :total="100" />
                 </div>
             </div>
@@ -36,9 +36,6 @@
 </script>
 
 <style lang="scss">
-    .el-select {
-        width: 64px;
-    }
     .example-pagination-block + .example-pagination-block {
         margin-top: 10px;
     }
